@@ -64,7 +64,7 @@ export function TestimonialCard({
         ))}
       </div>
 
-      <p className="flex-grow text-foreground/80">"{testimonial}"</p>
+      <p className="flex-grow text-foreground/80">&quot;{testimonial}&quot;</p>
 
       <div className="mt-4 border-t border-border/50 pt-4 text-right">
         <div className="inline-block rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary">

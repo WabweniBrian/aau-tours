@@ -209,7 +209,7 @@ export default function BookingDetailsPage({
                     <div className="flex">
                       <div className="relative mr-4">
                         <div className="mt-1.5 h-3 w-3 rounded-full bg-primary"></div>
-                        {booking.status !== "Completed" && (
+                        {booking.status !== "Confirmed" && (
                           <div className="absolute bottom-0 left-1.5 top-4 w-0.5 bg-border"></div>
                         )}
                       </div>
