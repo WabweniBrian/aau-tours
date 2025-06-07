@@ -4,61 +4,86 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ChevronRight, MapPin } from "lucide-react";
+import { ChevronRight, Car, Plane, Trophy, Camera } from "lucide-react";
 
 // Define the slide data
 const slides = [
   {
     id: 1,
-    title: "Discover the Pearl of Africa",
-    subtitle: "Experience Uganda's breathtaking landscapes and wildlife",
-    image: "/images/uganda-wildlife.jpg",
+    title: "Game & Safari Tours",
+    subtitle:
+      "Discover Uganda's breathtaking wildlife and landscapes with our premium safari packages",
+    image: "/images/safari-tours.jpg",
+    icon: Camera,
     cta: {
       primary: {
-        text: "Explore Tours",
+        text: "View Tour Packages",
         link: "/tour-packages",
       },
       secondary: {
         text: "Learn More",
-        link: "/about",
+        link: "/services#safari-tours",
       },
     },
-    location: "Uganda",
+    location: "Uganda National Parks",
   },
   {
     id: 2,
-    title: "Gorilla Trekking Adventures",
-    subtitle: "Get up close with mountain gorillas in their natural habitat",
-    image: "/images/gorilla-trekking.jpg",
+    title: "Motorsport Tours",
+    subtitle:
+      "Experience the thrill of international motorsport events with our specialized rally tour packages",
+    image: "/images/motorsport.jpg",
+    icon: Trophy,
     cta: {
       primary: {
-        text: "Book Now",
-        link: "/tour-packages/gorilla-trekking-bwindi",
+        text: "Explore Motorsport Tours",
+        link: "/services#motorsport-tours",
       },
       secondary: {
-        text: "View Packages",
-        link: "/tour-packages",
+        text: "Contact Us",
+        link: "/contact",
       },
     },
-    location: "Bwindi Impenetrable Forest",
+    location: "Kenya & Uganda",
   },
+
   {
     id: 3,
-    title: "Safari Experiences",
+    title: "Airport Transfers",
     subtitle:
-      "Witness the Big Five and stunning wildlife in Uganda's national parks",
-    image: "/images/queen-elizabeth-park.jpg",
+      "Professional and reliable airport pickup and drop-off services available 24/7",
+    image: "/images/airport-transfers.webp",
+    icon: Plane,
     cta: {
       primary: {
-        text: "Explore Safaris",
-        link: "/tour-packages",
+        text: "Book Transfer",
+        link: "/services#airport-transfers",
       },
       secondary: {
-        text: "View Destinations",
-        link: "/destinations",
+        text: "Get Quote",
+        link: "/contact",
       },
     },
-    location: "Queen Elizabeth National Park",
+    location: "Entebbe & Kampala",
+  },
+  {
+    id: 4,
+    title: "Car Leasing",
+    subtitle:
+      "Premium vehicle leasing for organizations and individuals with full fleet management",
+    image: "/images/car-rentals.jpg",
+    icon: Car,
+    cta: {
+      primary: {
+        text: "View Fleet",
+        link: "/services#car-leasing",
+      },
+      secondary: {
+        text: "Request Quote",
+        link: "/contact",
+      },
+    },
+    location: "Nationwide Coverage",
   },
 ];
 
@@ -150,16 +175,19 @@ export function HeroSection() {
           className="max-w-3xl text-white"
         >
           <motion.div
-            className="bg-brand-orange/80 mb-6 inline-flex items-center rounded-full px-4 py-1.5 text-sm font-medium backdrop-blur-sm"
+            className="mb-6 inline-flex items-center rounded-full bg-brand-orange/80 px-4 py-1.5 text-sm font-medium backdrop-blur-sm"
             custom={0}
             variants={contentVariants}
           >
-            <MapPin size={16} className="mr-2" />
+            {(() => {
+              const Icon = slides[currentSlide].icon;
+              return <Icon size={16} className="mr-2" />;
+            })()}
             {slides[currentSlide].location}
           </motion.div>
 
           <motion.h1
-            className="heading-xl mb-6"
+            className="mb-6 text-4xl font-bold leading-tight md:text-5xl lg:text-6xl"
             custom={1}
             variants={contentVariants}
           >
@@ -181,7 +209,7 @@ export function HeroSection() {
           >
             <Link
               href={slides[currentSlide].cta.primary.link}
-              className="btn-primary"
+              className="inline-flex items-center justify-center rounded-full bg-primary px-6 py-3 text-base font-medium text-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:bg-primary/90 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2"
             >
               {slides[currentSlide].cta.primary.text}
             </Link>
@@ -201,10 +229,12 @@ export function HeroSection() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
         >
-          <h3 className="mb-2 text-lg font-bold">Ready for an Adventure?</h3>
+          <h3 className="mb-2 text-lg font-bold">
+            Professional Travel Services
+          </h3>
           <p className="mb-4 text-sm text-foreground/70">
-            Book your tour today and experience the beauty of Uganda with our
-            expert guides.
+            From motorsport adventures to airport transfers, we provide
+            comprehensive travel solutions tailored to your needs.
           </p>
           <Link
             href="/contact"

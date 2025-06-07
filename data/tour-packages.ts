@@ -2,114 +2,6 @@ import type { TourPackage } from "@/types/tour-package";
 
 export const tourPackagesData: TourPackage[] = [
   {
-    id: "gorilla-trekking-bwindi",
-    title: "3 Days Gorilla Trekking Safari in Bwindi",
-    slug: "gorilla-trekking-bwindi",
-    location: "Bwindi Impenetrable Forest",
-    duration: "3 Days / 2 Nights",
-    price: 1200,
-    rating: 4.9,
-    image: "/images/gorilla-trekking.jpg",
-    shortDescription:
-      "Experience the thrill of encountering mountain gorillas in their natural habitat on this unforgettable 3-day safari to Bwindi Impenetrable Forest.",
-    description:
-      "Have an early breakfast before setting off on your adventure from Entebbe international airport or Kampala to Bwindi Impenetrable National Park for your 3 days Uganda gorilla trekking safari. A professional Uganda safari guide will meet you for a transfer to the Park. For the almost 550km drive to Bwindi National Park, you will be driven on a 4×4 wheel safari vehicle on a fairly tarmacked road along Kampala-Masaka-Mbarara-Kabale highway.",
-    highlights: [
-      "Trek through the ancient Bwindi Impenetrable Forest",
-      "Spend one hour with a mountain gorilla family",
-      "Learn about gorilla conservation efforts",
-      "Experience the culture of local communities",
-      "Enjoy comfortable accommodation in the heart of the forest",
-      "Contribute to the protection of endangered mountain gorillas",
-    ],
-    itinerary: [
-      {
-        title: "Drive to Bwindi Impenetrable Forest",
-        location: "Kampala to Bwindi",
-        description:
-          "Have an early breakfast before setting off on your adventure from Entebbe international airport or Kampala to Bwindi Impenetrable National Park. A professional Uganda safari guide will meet you for a transfer to the Park. For the almost 550km drive to Bwindi National Park, you will be driven on a 4×4 wheel safari vehicle on a fairly tarmacked road along Kampala-Masaka-Mbarara-Kabale highway. Along Kampala – Masaka highway, there will be a stopover at the Equator line in Kayabwe for a photo moment and geographical experiments on how water swirls in opposite directions in the Northern and Southern hemispheres at the Equator line. Continuing to the southern hemisphere for your Uganda gorilla tour, you have lunch en route at Mbarara town. Driving further to western Uganda, the rolling terraced hills of kigezi highlands and the long-horned Ankole cattle are part of what will constitute your scenic drive. On arrival at your preferred accommodation facility, your driver-guide ensures check-in for dinner and a night's rest at the hotel or lodge.",
-        activities: [
-          "Scenic drive through southwestern Uganda",
-          "Equator crossing photo opportunity",
-          "Evening check-in at accommodation",
-        ],
-        accommodation:
-          "Luxury: Buhoma Lodge/Chameleon Hill Lodge, Midrange: Silverback Lodge/Nkuringo Gorilla Camp, Budget: Buhoma Community Camp/Gorilla Valley Lodge",
-        meals: {
-          breakfast: true,
-          lunch: true,
-          dinner: true,
-        },
-      },
-      {
-        title: "Gorilla Trekking Experience",
-        location: "Bwindi Impenetrable Forest",
-        description:
-          "This is your long-awaited day for the Uganda Mountain Gorilla trekking safari in Bwindi forest. After early morning breakfast, your Uganda safari driver guide will pick you up from the accommodation facility for a drive to the gorilla trekking sector headquarters. At the headquarters, briefing on the tracking etiquette starts before 8:00 am local time. During the briefing, a total of 8 tourists are allocated a single gorilla family to trek according to fitness levels. Each gorilla safari Uganda trekker then receives a trekking stick and heads to the jungle in company of the park rangers and guides, Mountain Gorilla trekking in Bwindi is unpredictable because of the movement behaviors of the gorillas and therefore the activity lasts about 6-8 hours. These hours are spent in search of the gorillas however only 1 hour has spent the presence of these gentle giants. At the end of this memory-filled 1 hour, you return to the park headquarters where you receive a Uganda gorilla trekking tour certificate. Later after that, you meet with your safari driver-guide for a drive to your lodging facility. Besides the gorillas, Bwindi forest is also rich in a variety of African civet and the African golden cats, butterflies, endemic bird species, monkeys such as the red-tailed, Le'host, blue and black and white colobus monkeys, forest hogs, duikers, flowering plant species such as the brown mahogany which is a threatened plant species in the Park and so much more which you will sight as you take your nature walks through the scenic trails of the mighty jungle while on your 3 gorilla trekking safari.",
-        activities: [
-          "Gorilla trekking (6-8 hours depending on gorilla location)",
-          "One hour with a gorilla family",
-          "Photography opportunity",
-          "Nature walks through the forest",
-        ],
-        accommodation:
-          "Luxury: Buhoma Lodge/Chameleon Hill Lodge, Midrange: Silverback Lodge/Nkuringo Gorilla Camp, Budget: Buhoma Community Camp/Gorilla Valley Lodge",
-        meals: {
-          breakfast: true,
-          lunch: true,
-          dinner: true,
-        },
-      },
-      {
-        title: "Return to Kampala",
-        location: "Bwindi to Kampala",
-        description:
-          "After a beautiful night in the foothills of the gorilla land, you embark on the road drive back to Kampala or Entebbe International Airport for a departure flight. You will have lunch en route and can purchase any craft materials at several souvenir shops along the way to always remind you of your Bwindi gorilla trekking safari. Our safari guide ensures you get to your preferred end of 3 days gorilla trekking safari destination safely.",
-        activities: [
-          "Scenic drive back to Kampala",
-          "Souvenir shopping opportunity",
-        ],
-        accommodation: "N/A (end of tour)",
-        meals: {
-          breakfast: true,
-          lunch: true,
-          dinner: false,
-        },
-      },
-    ],
-    inclusions: [
-      "Accommodation while on safari",
-      "The costs also cover the services of English speaking driver/guide",
-      "Meals (Breakfast, Lunch, and Dinner) while on safari",
-      "1 soft drink per meal i.e. a soda or mineral water at/during lunch and dinner",
-      "Park entrance fees",
-      "One gorilla permit per person",
-      "Community visit",
-      "Ranger fees",
-      "A visit to Igongo Cultural Village",
-      "Fuel plus all activities while on the tour as detailed in the itinerary",
-      "Return Airport transfers",
-      "Transportation by 4 WD safari van, Fuel expenses",
-    ],
-    exclusions: [
-      "Local and international flights",
-      "Airport transfers (outside of safari dates)",
-      "Accommodation in Kampala (day prior to safari departure and on return from the safari)",
-      "Personal Travel insurance",
-      "Visa Fees",
-      "Drinks, cigarettes, tips, souvenirs and any other items of personal nature",
-    ],
-    additionalInfo: [
-      "For visitors that cannot hold 9 hours drive from Bwindi back to Kampala or Entebbe, we have a flying option for only 2 hours you will be at Entebbe International Airport. We can fly you from either Kisoro airstrip or Kihihi Airstrip to Entebbe.",
-      "Flight schedules: From Kisoro to Entebbe Departing 0910 arriving 1125, From Kihihi to Entebbe Departing 0945 arriving 1125 OR with an afternoon flight Departing 1405 arriving 1555.",
-    ],
-    tourType: "Wildlife & Nature",
-    groupSize: 8,
-    meals: "Full Board (as per itinerary)",
-    featured: true,
-    category: "gorilla",
-  },
-  {
     id: "chimpanzee-trekking-kibale",
     title: "3 Days Chimpanzee Trekking Safari in Kibale",
     slug: "chimpanzee-trekking-kibale",
@@ -117,17 +9,19 @@ export const tourPackagesData: TourPackage[] = [
     duration: "3 Days / 2 Nights",
     price: 950,
     rating: 4.8,
-    image: "/images/chimpanzee.jpg",
+    image: "/images/gorilla-trekking.jpg",
     shortDescription:
       "Explore Kibale National Park, home to our closest relative – the endangered Chimpanzee, on this exciting 3-day safari adventure.",
     description:
-      "Kibale National Park is one of the most beautiful and stunning forests in Uganda. It is home to our closest relative – the endangered Chimpanzee. The forest also boasts of having one of the highest diversity and density of primates in Africa totaling 13 species that include the threatened Red Colobus monkey, L'hoest's monkey, Blue monkey, Grey Cheeked, Velvet and the Black / White Colobus monkeys.",
+      "Kibale National Park is one of the most beautiful and stunning forests in Uganda. It is home to our closest relative – the endangered Chimpanzee. The forest also boasts of having one of the highest diversity and density of primates in Africa totaling 13 species that include the threatened Red Colobus monkey, L'hoest's monkey Blue monkey, Grey Cheeked, Velvet and the Black / White Colobus monkeys.",
     highlights: [
-      "Track chimpanzees in their natural habitat",
-      "Visit Bigodi Wetland Sanctuary",
-      "Explore the crater lakes region",
-      "Observe diverse primate species",
-      "Experience the beautiful landscapes of western Uganda",
+      "Track chimpanzees in their natural habitat with over 90% success rate",
+      "Visit Nyakasura to see stalagmites and stalactites 'Amabere Ga Nyinamwiru'",
+      "Explore Bigodi Wetland Sanctuary",
+      "Guided walk around the swamp to see diverse flora and fauna",
+      "Tour the crater region around Ndali lodge",
+      "Visit crater Lakes of Ndali for outstanding scenery",
+      "Optional tea plantation visits",
     ],
     itinerary: [
       {
@@ -148,15 +42,15 @@ export const tourPackagesData: TourPackage[] = [
         },
       },
       {
-        title: "Chimpanzee Trekking in Kibale",
+        title: "Chimpanzee Trekking Safari in Kibale",
         location: "Kibale National Park",
         description:
           "After early breakfast, report at Kanyanchu Tourist Centre where tourist activities begin and set out to track chimpanzees in Kibale forest. Chances of viewing the chimps are over 90% but not a guarantee. After lunch visit Bigodi Wetland Sanctuary from where you will take on a guided walk around the swamp. This walk will provide you with the opportunity to see a wide range of flora and fauna. View a variety of butterflies, birds and other insects. Have a tour of the crater region around Ndali lodge. You may also stop over at any tea plantation along the road if you wish.",
         activities: [
-          "Chimpanzee trekking in Kibale forest",
+          "Chimpanzee trekking at Kanyanchu Tourist Centre",
           "Guided walk in Bigodi Wetland Sanctuary",
           "Tour of the crater region around Ndali lodge",
-          "Optional visit to tea plantations",
+          "Optional tea plantation visits",
         ],
         accommodation: "Lodge in Kibale National Park",
         meals: {
@@ -171,8 +65,8 @@ export const tourPackagesData: TourPackage[] = [
         description:
           "Morning guided walk to visit the crater Lakes of Ndali for outstanding scenery, there after proceed to Kampala with Lunch en route.",
         activities: [
-          "Morning guided walk to the crater Lakes of Ndali",
-          "Return journey to Kampala",
+          "Morning guided walk to crater Lakes of Ndali",
+          "Return journey to Kampala with lunch en route",
         ],
         accommodation: "N/A (end of tour)",
         meals: {
@@ -189,7 +83,9 @@ export const tourPackagesData: TourPackage[] = [
       "Meals as specified in the itinerary",
       "Park entrance fees",
       "Chimpanzee trekking permit",
-      "Guided walks",
+      "Guided walks and tours",
+      "Visit to Nyakasura caves",
+      "Bigodi Wetland Sanctuary visit",
       "Bottled water during the safari",
     ],
     exclusions: [
@@ -203,7 +99,8 @@ export const tourPackagesData: TourPackage[] = [
     ],
     tourType: "Wildlife & Primates",
     groupSize: 6,
-    meals: "Full Board (as per itinerary)",
+    meals:
+      "Lunch and Dinner on Day 1, Full Board on Day 2, Breakfast and Lunch on Day 3",
     featured: false,
     category: "primates",
   },
@@ -219,13 +116,15 @@ export const tourPackagesData: TourPackage[] = [
     shortDescription:
       "Explore the diverse wildlife and stunning landscapes of Queen Elizabeth National Park on this 3-day safari adventure.",
     description:
-      "Queen Elizabeth National Park is one of Uganda's most popular wildlife destinations. The park is known for its diverse ecosystems, including sprawling savanna, shady forests, sparkling lakes, and fertile wetlands, which make it the ideal habitat for classic big game, primates, and over 600 species of birds.",
+      "Queen Elizabeth National Park offers beautiful scenery, herds of long horned Ankole cattle, tea plantations in Ishaka, Rift valley escarpment, open grassland and woodland savanna. Experience game drives, boat cruises, and primate walks in this diverse ecosystem.",
     highlights: [
-      "Game drives in search of wildlife",
-      "Boat cruise on the Kazinga Channel",
+      "Game drives in Kasenyi and Queens Mile",
+      "Boat cruise on the famous Kazinga Channel",
       "Guided primate walk along Kyambura Gorge",
-      "Bird watching opportunities with over 600 species",
-      "Beautiful landscapes and diverse ecosystems",
+      "Equator crossing photography opportunity",
+      "Visit to Igongo Cultural village",
+      "Scenic drive through Rift valley escarpment",
+      "Wildlife viewing including elephants, lions, buffalo, and Uganda Kobs",
     ],
     itinerary: [
       {
@@ -236,7 +135,8 @@ export const tourPackagesData: TourPackage[] = [
         activities: [
           "Scenic drive to Queen Elizabeth National Park",
           "Equator crossing photo opportunity",
-          "Evening game drive",
+          "Lunch in Mbarara",
+          "Evening game drive en route to lodge",
         ],
         accommodation: "Lodge in Queen Elizabeth National Park",
         meals: {
@@ -251,8 +151,9 @@ export const tourPackagesData: TourPackage[] = [
         description:
           "Begin your day with a cup of coffee. Early morning game drive along Kasenyi and Queens Mile makes visitors encounter elephants, buffalo, water bucks, warthogs, lions, Uganda Kobs lakes and a variety of birds. Return to the lodge for breakfast and lunch. After lunch, a two hour boat trip along the famous Kazinga channel is worthwhile an opportunity to see Hippo, Buffalo, Kobs, Elephants, warthogs etc. This trip also enables visitor chance to see spectacular birds.",
         activities: [
-          "Morning game drive in Kasenyi and Queens Mile",
-          "Boat trip along the Kazinga Channel",
+          "Early morning game drive in Kasenyi and Queens Mile",
+          "Two-hour boat trip along Kazinga Channel",
+          "Wildlife and bird watching",
         ],
         accommodation: "Lodge in Queen Elizabeth National Park",
         meals: {
@@ -268,6 +169,7 @@ export const tourPackagesData: TourPackage[] = [
           "With previous day's memories, enjoy your breakfast ready for guided primate walk along Kyambura Gorge to look for habituated chimps through the gorge. After primate walk, drive to for Lunch at Kingfisher Lodge and later continue at your convenience back to Entebbe and a visit to Igongo Cultural village is a must. Return to Entebbe where you will be dropped off at a place of your choice.",
         activities: [
           "Guided primate walk along Kyambura Gorge",
+          "Lunch at Kingfisher Lodge",
           "Visit to Igongo Cultural village",
           "Return to Entebbe",
         ],
@@ -288,6 +190,7 @@ export const tourPackagesData: TourPackage[] = [
       "Game drives",
       "Boat cruise on Kazinga Channel",
       "Guided primate walk in Kyambura Gorge",
+      "Visit to Igongo Cultural village",
       "Bottled water during the safari",
     ],
     exclusions: [
@@ -301,7 +204,7 @@ export const tourPackagesData: TourPackage[] = [
     ],
     tourType: "Wildlife Safari",
     groupSize: 6,
-    meals: "Full Board (as per itinerary)",
+    meals: "Full Board",
     featured: false,
     category: "wildlife",
   },
@@ -317,24 +220,27 @@ export const tourPackagesData: TourPackage[] = [
     shortDescription:
       "Experience the power and beauty of Murchison Falls National Park on this compact 2-day safari adventure.",
     description:
-      "This 2-day safari to Murchison Falls National Park offers a perfect introduction to Uganda's largest and oldest conservation area. The park is bisected by the Victoria Nile, which plunges 45 meters over the remnant rift valley wall, creating the dramatic Murchison Falls.",
+      "This 2-day safari to Murchison Falls National Park offers a perfect introduction to Uganda's largest and oldest conservation area. Experience the panoramic drive through the famous Luwero Triangle, boat safari on Victoria Nile, and game drives to spot diverse wildlife.",
     highlights: [
-      "Boat safari upstream to the base of Murchison Falls",
+      "Panoramic drive through Luwero Triangle and Masindi",
+      "Boat safari upstream Victoria Nile to the base of the falls",
+      "Hike to the Top of the Falls (Devil's Cauldron)",
       "Game drive to spot elephants, lions, giraffes and more",
       "Visit to Ziwa Rhino sanctuary",
-      "Chance to see hippos, crocodiles, and elephants along the river",
-      "Beautiful landscapes and diverse ecosystems",
+      "Bird watching including rare shoebill stork",
+      "Wildlife viewing along 17km stretch of the Nile",
     ],
     itinerary: [
       {
         title: "Kampala – Murchison Falls",
         location: "Kampala to Murchison Falls NP",
         description:
-          "Our guide picks you up from your hotel or place of residence at 0600am and begin the panoramic drive north-west through the famous Luwero Triangle and Masindi. Continue to Murchison Falls cross the free for an early lunch ready to catch up with an afternoon boat safari upstream the calm Victoria Nile to the base of the falls stopping just tens of meters from the 'Devil's Cauldron'. En-route, marvel at the toothsome hippos, crocodiles and over this 17 km stretch you may see elephant, waterbuck and Uganda Kob crocodile. This is also a zone of many bird species like Goliath heron, Egyptian goose, pelican bee-eater, kingfisher, hornbill, cormorant and the rare shoebill stork. There you leave the boat and start your – quite heavy – hike to the Top of the Falls (approx. 1 hour). See where the world's longest river explodes violently through a narrow cleft in the Rift Valley escarpment to plunge into a frothing pool 43m below. Your driver/guide will be waiting for you to bring you back to the lodge.",
+          "Our guide picks you up from your hotel or place of residence at 0600 am and begin the panoramic drive north-west through the famous Luwero Triangle and Masindi. Continue to Murchison Falls cross the free for an early lunch ready to catch up with an afternoon boat safari upstream the calm Victoria Nile to the base of the falls stopping just tens of meters from the 'Devil's Cauldron'. En-route, marvel at the toothsome hippos, crocodiles and over this 17 km stretch you may see elephant, waterbuck and Uganda Kob crocodile. This is also a zone of many bird species like Goliath heron, Egyptian goose, pelican bee-eater, kingfisher, hornbill, cormorant and the rare shoebill stork. There you leave the boat and start your – quite heavy – hike to the Top of the Falls (approx. 1 hour). See where the world's longest river explodes violently through a narrow cleft in the Rift Valley escarpment to plunge into a frothing pool 43m below. Your driver/guide will be waiting for you to bring you back to the lodge.",
         activities: [
-          "Scenic drive through Luwero Triangle and Masindi",
+          "Panoramic drive through Luwero Triangle and Masindi",
           "Afternoon boat safari on Victoria Nile",
-          "Hike to the Top of the Falls",
+          "Hike to the Top of the Falls (1 hour)",
+          "Wildlife and bird watching",
         ],
         accommodation: "Heritage Safari Lodge (Budget Facility)",
         meals: {
@@ -352,7 +258,8 @@ export const tourPackagesData: TourPackage[] = [
           "Morning game drive",
           "Visit to Ziwa Rhino sanctuary",
           "Guided Rhino walk",
-          "Return to Kampala/Entebbe",
+          "Picnic lunch",
+          "Return to Kampala",
         ],
         accommodation: "N/A (end of tour)",
         meals: {
@@ -365,12 +272,13 @@ export const tourPackagesData: TourPackage[] = [
     inclusions: [
       "Transportation in a 4x4 safari vehicle",
       "English-speaking driver/guide",
-      "Accommodation as per itinerary",
+      "Accommodation at Heritage Safari Lodge",
       "Meals as specified in the itinerary",
       "Park entrance fees",
       "Game drive",
-      "Boat safari",
+      "Boat safari on Victoria Nile",
       "Guided Rhino walk at Ziwa Rhino sanctuary",
+      "Hike to the Top of the Falls",
       "Bottled water during the safari",
     ],
     exclusions: [
@@ -384,9 +292,116 @@ export const tourPackagesData: TourPackage[] = [
     ],
     tourType: "Wildlife Safari",
     groupSize: 6,
-    meals: "Full Board (as per itinerary)",
+    meals: "Lunch and Dinner on Day 1, Breakfast and Lunch on Day 2",
     featured: false,
     category: "wildlife",
+  },
+  {
+    id: "gorilla-trekking-bwindi",
+    title: "3 Days Gorilla Trekking Safari in Bwindi",
+    slug: "gorilla-trekking-bwindi",
+    location: "Bwindi Impenetrable Forest",
+    duration: "3 Days / 2 Nights",
+    price: 1200,
+    rating: 4.9,
+    image: "/images/gorilla-trekking.jpg",
+    shortDescription:
+      "Experience the thrill of encountering mountain gorillas in their natural habitat on this unforgettable 3-day safari to Bwindi Impenetrable Forest.",
+    description:
+      "Have an early breakfast before setting off on your adventure from Entebbe international airport or Kampala to Bwindi Impenetrable National Park for your 3 days Uganda gorilla trekking safari. A professional Uganda safari guide will meet you for a transfer to the Park. Experience the rolling terraced hills of kigezi highlands and encounter the gentle giants of Bwindi.",
+    highlights: [
+      "Trek through the ancient Bwindi Impenetrable Forest",
+      "Spend one hour with a mountain gorilla family",
+      "Equator crossing photo opportunity and geographical experiments",
+      "Scenic drive through kigezi highlands",
+      "View long-horned Ankole cattle",
+      "Receive Uganda gorilla trekking tour certificate",
+      "Souvenir shopping opportunities",
+      "Professional safari guide throughout the journey",
+    ],
+    itinerary: [
+      {
+        title: "Drive to Bwindi Impenetrable Forest",
+        location: "Kampala to Bwindi",
+        description:
+          "Have an early breakfast before setting off on your adventure from Entebbe international airport or Kampala to Bwindi Impenetrable National Park for your 3 days Uganda gorilla trekking safari. A professional Uganda safari guide from wild jungle trails will meet you for a transfer to the Park. For the almost 550km drive to Bwindi National Park, you will be driven on a 4×4 wheel safari vehicle on a fairly tarmacked road along Kampala- Masaka- Mbarara-Kabale highway. Along Kampala – Masaka highway, there will be a stopover at the Equator line in Kayabwe for a photo moment and geographical experiments on how water swirls in opposite directions in the Northern and Southern hemispheres at the Equator line. Continuing to the southern hemisphere for your Uganda gorilla tour, you have lunch en route at Mbarara town. Driving further to western Uganda, the rolling terraced hills of kigezi highlands and the long-horned Ankole cattle are part of what will constitute your scenic drive. On arrival at your preferred accommodation facility, your driver-guide ensures check-in for dinner and a night's rest at the hotel or lodge.",
+        activities: [
+          "Scenic drive through southwestern Uganda (8-10 hours)",
+          "Equator crossing photo opportunity and experiments",
+          "Lunch in Mbarara town",
+          "Evening check-in at accommodation",
+        ],
+        accommodation: "Lodge in Bwindi area",
+        meals: {
+          breakfast: true,
+          lunch: true,
+          dinner: true,
+        },
+      },
+      {
+        title: "Gorilla Trekking Experience",
+        location: "Bwindi Impenetrable Forest",
+        description:
+          "This is your long-awaited day for the Uganda Mountain Gorilla trekking safari in Bwindi forest. After early morning breakfast, your Uganda safari driver guide will pick you up from the accommodation facility for a drive to the gorilla trekking sector headquarters. At the headquarters, briefing on the tracking etiquette starts before 8:00 am local time. During the briefing, a total of 8 tourists are allocated a single gorilla family to trek according to fitness levels. Each gorilla safari Uganda trekker then receives a trekking stick and heads to the jungle in company of the park rangers and guides, Mountain Gorilla trekking in Bwindi is unpredictable because of the movement behaviors of the gorillas and therefore the activity lasts about 6-8 hours. These hours are spent in search of the gorillas however only 1 hour has spent the presence of these gentle giants. At the end of this memory-filled 1 hour, you return to the park headquarters where you receive a Uganda gorilla trekking tour certificate. Besides the gorillas, Bwindi forest is also rich in a variety of African civet and the African golden cats, butterflies, endemic bird species, monkeys such as the red-tailed, Le'host, blue and black and white colobus monkeys, forest hogs, duikers, flowering plant species such as the brown mahogany which is a threatened plant species in the Park.",
+        activities: [
+          "Gorilla trekking briefing at sector headquarters",
+          "Gorilla trekking (6-8 hours depending on gorilla location)",
+          "One hour with a gorilla family",
+          "Receive gorilla trekking certificate",
+          "Nature walks through scenic forest trails",
+        ],
+        accommodation: "Lodge in Bwindi area",
+        meals: {
+          breakfast: true,
+          lunch: true,
+          dinner: true,
+        },
+      },
+      {
+        title: "Return to Kampala",
+        location: "Bwindi to Kampala",
+        description:
+          "After a beautiful night in the foothills of the gorilla land, you embark on the road drive back to Kampala or Entebbe International Airport for a departure flight. You will have lunch en route and can purchase any craft materials at several souvenir shops along the way to always remind you of your Bwindi gorilla trekking safari. Our Wild Jungle Trails Uganda safari guide ensures you get to your preferred end of 3 days gorilla trekking safari destination safely.",
+        activities: [
+          "Scenic drive back to Kampala",
+          "Lunch en route",
+          "Souvenir shopping opportunity",
+        ],
+        accommodation: "N/A (end of tour)",
+        meals: {
+          breakfast: true,
+          lunch: true,
+          dinner: false,
+        },
+      },
+    ],
+    inclusions: [
+      "Transportation in a 4x4 safari vehicle",
+      "Professional English-speaking driver/guide",
+      "Accommodation as per itinerary",
+      "Meals as specified in the itinerary",
+      "Park entrance fees",
+      "One gorilla permit per person",
+      "Gorilla trekking certificate",
+      "Ranger fees and guides",
+      "Fuel and all activities as detailed in itinerary",
+      "Bottled water during the safari",
+    ],
+    exclusions: [
+      "International flights",
+      "Visa fees",
+      "Travel insurance",
+      "Personal expenses",
+      "Tips and gratuities",
+      "Alcoholic beverages",
+      "Activities not mentioned in the itinerary",
+    ],
+    tourType: "Wildlife & Nature",
+    groupSize: 8,
+    meals:
+      "Lunch and Dinner on Day 1, Full Board on Day 2, Breakfast and Lunch on Day 3",
+    featured: true,
+    category: "gorilla",
   },
   {
     id: "uganda-15-days",
@@ -400,7 +415,7 @@ export const tourPackagesData: TourPackage[] = [
     shortDescription:
       "Experience the best of Uganda with this comprehensive 15-day tour covering wildlife, primates, and cultural experiences across the country.",
     description:
-      "This comprehensive 15-day tour takes you through the most beautiful and diverse areas of Uganda. From the magnificent Murchison Falls to the mountain gorillas of Bwindi, this tour offers a complete Uganda experience with wildlife safaris, primate tracking, and cultural encounters.",
+      "This comprehensive 15-day tour takes you through the most beautiful and diverse areas of Uganda. From the magnificent Murchison Falls to the mountain gorillas of Bwindi, this tour offers a complete Uganda experience with wildlife safaris, primate tracking, cultural encounters, and relaxation at beautiful lakes.",
     highlights: [
       "Visit to Murchison Falls National Park",
       "Chimpanzee tracking in Kibale Forest",
@@ -409,6 +424,9 @@ export const tourPackagesData: TourPackage[] = [
       "Boat cruise on Lake Bunyonyi",
       "Walking safari in Lake Mburo National Park",
       "Cultural experiences and village visits",
+      "Semliki National Park exploration",
+      "Hot springs visit",
+      "Maramagambo Forest walk",
     ],
     itinerary: [
       {
@@ -419,7 +437,9 @@ export const tourPackagesData: TourPackage[] = [
         activities: [
           "Airport pickup",
           "Kampala city tour (time permitting)",
-          "Visit to historical sites",
+          "Visit to historical sites including Namugongo Martyrs Shrine",
+          "Visit Uganda Museum and Kabakas palace",
+          "African Craft Village visit",
         ],
         accommodation: "Cassia Lodge",
         meals: {
@@ -435,7 +455,9 @@ export const tourPackagesData: TourPackage[] = [
           "On the first day we will depart for the most beautiful protected area in Uganda: Murchison Falls National Park. Enjoy a lunch stop in Masindi before we enter the park. We will visit the magnificent falls where you will enjoy and marvel at the mighty Nile. The famous waterfall is being forced into a seven meter crevice, to thunder 45 meters below in a series of cascades. This spectacular scenery can be viewed from different points up at the baler's summit.",
         activities: [
           "Drive to Murchison Falls National Park",
-          "Visit to the top of Murchison Falls",
+          "Lunch stop in Masindi",
+          "Visit to the magnificent Murchison Falls",
+          "Views from baler's summit",
         ],
         accommodation: "Lodge in Murchison Falls NP",
         meals: {
@@ -450,8 +472,10 @@ export const tourPackagesData: TourPackage[] = [
         description:
           "After an early morning breakfast you will enjoy a half-day game drive on the northern bank of the Nile, escorted by a ranger. Game in this part includes the elephant, Rothschild giraffe, Jackson hartebeest, lions, oribis, waterbucks and a variety of savannah woodland birds. After lunch we will go on a Nile cruise for game viewing at close quarters. Watch how hippos take a bath; elephants come to drink and crocodiles lying lazy at the shores.",
         activities: [
-          "Morning game drive on the northern bank of the Nile",
-          "Afternoon Nile cruise for game viewing",
+          "Half-day game drive on northern bank of the Nile",
+          "Nile cruise for game viewing",
+          "Wildlife viewing including elephants, giraffes, lions",
+          "Bird watching",
         ],
         accommodation: "Lodge in Murchison Falls NP",
         meals: {
@@ -466,8 +490,9 @@ export const tourPackagesData: TourPackage[] = [
         description:
           "We depart Murchison Falls and head towards Fort Portal. The drive is almost eight hours but will provide you with some stunning views as you pass small African villages and banana plantations. The lovely town of Fort Portal rests in the shadow of the fabled Mountains of the Moon and is famous for the many tea plantations.",
         activities: [
-          "Scenic drive to Fort Portal",
+          "Scenic drive to Fort Portal (8 hours)",
           "Views of small African villages and banana plantations",
+          "Arrival in Fort Portal town",
         ],
         accommodation: "Lodge in Fort Portal",
         meals: {
@@ -483,8 +508,9 @@ export const tourPackagesData: TourPackage[] = [
           "After breakfast we drive towards Semliki National Park. The scenic, winding road will lead us through green mountains and offers you a magnificent view at the River Semliki and Congo. After arriving in the protected area, a ranger will accompany us on a beautiful nature walk through the Ituri Rainforest. Enjoy the peacefulness of the forest, look out for the rich birdlife at the swamp and boil an egg in the hot springs that have become an interesting natural attraction. It will be completed with a picnic lunch provided by the guide, while you explore the real Africa. Later in the afternoon we return to Kibale Forest.",
         activities: [
           "Drive to Semliki National Park",
-          "Nature walk through the Ituri Rainforest",
-          "Visit to the hot springs",
+          "Nature walk through Ituri Rainforest",
+          "Visit to hot springs",
+          "Picnic lunch in the forest",
           "Return to Kibale Forest",
         ],
         accommodation: "Lodge in Kibale Forest",
@@ -501,7 +527,8 @@ export const tourPackagesData: TourPackage[] = [
           "Today the forest opens it doors for a sensational chimp tracking. Kibale Forest is reputable of having the greatest variety and highest concentration of primates in East Africa. Enjoy a guided nature walk in the tropical rainforest in search of the wild chimpanzee, red-tailed monkey, black-and-white colobus monkey and many others. After a hearty lunch we transfer to the Bigodi Swamp for another, totally different nature walk. The Bigodi Swamp Walk is an initiative of the local community and takes approximately two hours. The swamp is known for its rich diversity of birds and primates.",
         activities: [
           "Chimpanzee tracking in Kibale Forest",
-          "Bigodi Swamp Walk",
+          "Bigodi Swamp Walk (2 hours)",
+          "Primate and bird watching",
         ],
         accommodation: "Primate Lodge Kibale",
         meals: {
@@ -516,9 +543,9 @@ export const tourPackagesData: TourPackage[] = [
         description:
           "We transfer to Queen Elizabeth National Park. It is a beautiful route via Kasese, with the Rwenzori Mountains on your right side and the green valley on the left. A game drive on our way to the accommodation in the middle of the national park gives us the chance to spot waterbucks, warthogs and other wildlife. After lunch we take on a boat cruise along the Kazinga Channel, a natural channel between Lake Edward and Lake George. Thanks to the elephants, buffaloes and hundreds of hippos, this cruise will definitely be one of the highlights of your safari.",
         activities: [
-          "Transfer to Queen Elizabeth National Park",
+          "Transfer to Queen Elizabeth National Park via Kasese",
           "Game drive en route",
-          "Boat cruise along the Kazinga Channel",
+          "Boat cruise along Kazinga Channel",
         ],
         accommodation: "Lodge in Queen Elizabeth NP",
         meals: {
@@ -531,11 +558,12 @@ export const tourPackagesData: TourPackage[] = [
         title: "Queen Elizabeth National Park",
         location: "Queen Elizabeth National Park",
         description:
-          "The day begins early as we head for the mating ground of the Uganda kobs. We search for lions, elephants, buffaloes and other wild animals in their natural habitat, before returning for lunch. In the afternoon you will have the opportunity to stretch your legs as we will visit the Maramagambo Forest for a walk through the tropical forest. It is known for the Blue Lake and the Bat and Hunters Cave. You will get the chance to have a close look at the bats and maybe even the rock python and forest cobras, that feed on the bats. The same walk will provide you with views of primates, different bird species and beautiful fauna.",
+          "The day begins early as we head for the mating ground of the Uganda kobs. We search for lions, elephants, buffaloes and other wild animals in their natural habitat, before returning for lunch. In the afternoon you will have the opportunity to stretch your legs as we will visit the Maramagambo Forest for a walk through the tropical forest. It is known for the Blue Lake and the Bat and Hunters Cave. You will get the chance to have a close look at the bats and maybe even the rock python and forest cobras that feed on the bats. The same walk will provide you with views of primates, different bird species and beautiful fauna.",
         activities: [
           "Early morning game drive",
           "Visit to Maramagambo Forest",
           "Walk to Blue Lake and Bat Cave",
+          "Wildlife and bird watching",
         ],
         accommodation: "Lodge in Queen Elizabeth NP",
         meals: {
@@ -569,6 +597,7 @@ export const tourPackagesData: TourPackage[] = [
         activities: [
           "Gorilla trekking in Bwindi Impenetrable Forest",
           "One hour with mountain gorillas",
+          "Briefing on gorilla behavior",
         ],
         accommodation: "Lodge in Bwindi",
         meals: {
@@ -586,6 +615,7 @@ export const tourPackagesData: TourPackage[] = [
           "Optional: Guided village walk",
           "Transfer to Lake Bunyonyi",
           "Evening relaxation or canoe trip",
+          "Sunset viewing",
         ],
         accommodation: "Lodge at Lake Bunyonyi",
         meals: {
@@ -616,9 +646,10 @@ export const tourPackagesData: TourPackage[] = [
         description:
           "After breakfast we drive to Lake Mburo National Park which takes us about four hours with lunch en route. As we enter the park and head towards the accommodation it is likely that you will see some wildlife, like impalas, topis, warthogs, zebras and buffaloes. After checking in you will go on a boat ride on the lake and enjoy the rich birdlife and the hippos that are cooling off.",
         activities: [
-          "Drive to Lake Mburo National Park",
+          "Drive to Lake Mburo National Park (4 hours)",
           "Game viewing en route",
           "Boat ride on Lake Mburo",
+          "Bird watching and hippo viewing",
         ],
         accommodation: "Lodge in Lake Mburo NP",
         meals: {
@@ -633,11 +664,11 @@ export const tourPackagesData: TourPackage[] = [
         description:
           "Early start of the day as we will go for a nature walk guided by a ranger. Lake Mburo is the only national park where you can experience a safari on foot. After breakfast we transfer to Kampala with a stop at the equator for photos or shopping. Arrival late in the afternoon in Kampala.",
         activities: [
-          "Guided nature walk in Lake Mburo NP",
+          "Guided nature walk (walking safari)",
           "Transfer to Kampala",
-          "Stop at the equator",
+          "Stop at the equator for photos and shopping",
         ],
-        accommodation: "Orchidea Guesthouse",
+        accommodation: "Hotel in Kampala",
         meals: {
           breakfast: true,
           lunch: true,
@@ -670,6 +701,7 @@ export const tourPackagesData: TourPackage[] = [
       "Gorilla trekking permit",
       "Chimpanzee trekking permit",
       "Guided walks",
+      "Cultural visits",
       "Bottled water during the safari",
     ],
     exclusions: [
@@ -688,56 +720,58 @@ export const tourPackagesData: TourPackage[] = [
     category: "comprehensive",
   },
   {
-    id: "zanzibar-island-safari",
-    title: "4 Days Zanzibar Island Safari Tour",
-    slug: "zanzibar-island-safari",
-    location: "Zanzibar, Tanzania",
-    duration: "4 Days / 3 Nights",
-    price: 750,
-    rating: 4.8,
-    image: "/images/zan.jpg",
+    id: "bwindi-gorilla-8-days",
+    title: "8 Days Bwindi Gorilla Tracking Safari",
+    slug: "bwindi-gorilla-8-days",
+    location: "Multiple Locations",
+    duration: "8 Days / 7 Nights",
+    price: 2200,
+    rating: 4.9,
+    image: "/images/bwindi-8-days.jpg",
     shortDescription:
-      "Explore the beautiful island of Zanzibar with its rich culture, spice plantations, and pristine beaches on this 4-day tour.",
+      "An extended gorilla tracking safari featuring double gorilla encounters, Semliki National Park exploration, and comprehensive wildlife experiences.",
     description:
-      "This 4-day Zanzibar Island Safari Tour takes you through the cultural and natural highlights of this beautiful island. From the historic Stone Town to the famous spice plantations and relaxing beaches, this tour offers a perfect blend of culture, history, and relaxation.",
+      "This 8-day safari offers an in-depth exploration of Uganda's wildlife with double gorilla tracking experiences in Bwindi, visits to Semliki National Park with its hot springs, and comprehensive wildlife viewing. Experience the unique opportunity to track gorillas twice and explore diverse ecosystems.",
     highlights: [
-      "Explore historic Stone Town",
-      "Visit spice plantations",
-      "Relax on pristine beaches",
-      "Experience local culture and cuisine",
-      "Shop for locally made perfumes and oils",
+      "Double gorilla tracking experience in Bwindi",
+      "Visit to Semliki National Park and hot springs",
+      "Tree climbing lions in Ishasha sector",
+      "Boat ride on Lake Albert",
+      "Search for rare Shoebill Stork",
+      "Community foot safari",
+      "Ankole museum visit at Igongo Cultural village",
+      "Comprehensive wildlife viewing",
     ],
     itinerary: [
       {
-        title: "Meet and Greet",
-        location: "Zanzibar Airport to Stone Town",
+        title: "Arrival Entebbe Airport – Kampala",
+        location: "Entebbe to Kampala",
         description:
-          "The Zanzibar Island Safari Tour starts with clients meeting our representative at Zanzibar Airport. After meet and greet we will take a transfer to Tembo hotel or Sultan sand resort. Its 10 minutes drive from Airport to Tembo Hotel which is based in the Capital Stone Town over-looking the Blue Warm Waters of the Indian Ocean. After check in and have a bit of leisure time we meet our guide for the city tour, we can start this just after lunch. We experience the city & the true culture of Zanzibar; visit the famous house of wonder, the sultan palace, the old museum and the old market where you can shop for various fruits and spices. You will also see the cathedral church and the old dispensary. Walk through the famous alleys of Zanzibar, intermingling with the local people and enjoy the aroma of coffee and spices around you. You can also visit the numerous shops that are available in stone town. This is the best day for shopping.",
+          "Upon arrival at the airport, you will be warmly welcomed by our guide who will then take you to Cassia Lodge, Overlooking Lake Victoria (Mid Lodge facility) for an overnight and dinner.",
         activities: [
           "Airport pickup",
-          "Check-in at Tembo Hotel or Sultan Sand Resort",
-          "Stone Town city tour",
-          "Shopping in local markets",
+          "Transfer to Cassia Lodge",
+          "Evening relaxation",
         ],
-        accommodation: "Tembo Hotel or Sultan Sands Resort",
+        accommodation: "Cassia Lodge (Mid Lodge facility)",
         meals: {
           breakfast: false,
-          lunch: true,
+          lunch: false,
           dinner: true,
         },
       },
       {
-        title: "Transfer to Sultan Sands with Spice Tour en Route",
-        location: "Stone Town to Sultan Sands",
+        title: "Kampala – Bwindi Impenetrable Forest",
+        location: "Kampala to Bwindi",
         description:
-          "After breakfast we drive through the countryside of Zanzibar to the plantations where you can sample various types of tropical fruits, root crops, flowering trees and spices i.e. ginger, cardamom, lemon grass and cinnamon. That are grown and which are the no 1 export products of Zanzibar. You therefore get to know why Zanzibar Island is popularly known as 'The spice Island'. You sample the fruits that are in abundance it the farms. This is also the cheapest place to buy locally made perfumes and oils. After taking a very special locally prepared spice lunch right on the plantation we continue to Sultan Sands for leisure.",
+          "Our guide/driver picks you at 7:30 am from Cassia Lodge in Kampala. Drive to Mbarara (283km from Kampala) via Masaka. Make a first stop over at Equator crossing for snacks and photography. Proceed with a visit to Igongo Cultural village this is more rewarding and amazing as you visit the Ankole museum. Lunch break is made at Agip Motel Mbarara. After lunch, drive to Bwindi. This is the lushest highland rain forest on earth, filled with primates and exotic birds, valleys, hilltops and papyrus swamps.",
         activities: [
-          "Spice plantation tour",
-          "Sampling tropical fruits and spices",
-          "Special locally prepared spice lunch",
-          "Transfer to Sultan Sands Resort",
+          "Drive to Bwindi via Masaka",
+          "Equator crossing stop",
+          "Visit to Igongo Cultural village and Ankole museum",
+          "Lunch in Mbarara",
         ],
-        accommodation: "Sultan Sands Resort",
+        accommodation: "Silver Back Lodge (Mid Lodge facility)",
         meals: {
           breakfast: true,
           lunch: true,
@@ -745,15 +779,16 @@ export const tourPackagesData: TourPackage[] = [
         },
       },
       {
-        title: "Full day dedicated for Leisure",
-        location: "Sultan Sands Resort",
+        title: "Bwindi Gorilla Tracking Safari",
+        location: "Bwindi Impenetrable Forest",
         description:
-          "Free at leisure. Enjoy the beautiful beaches and resort facilities.",
+          "After breakfast set off early with guides for this Bwindi Gorilla Tracking Safari. The thrill of your encounter will erase the difficulties of the potentially strenuous trek. Bring jungle boots and rain jackets because the park is often wet. Spend time in awe watching the gorillas go about their activities. Each gorilla safari encounter is different and has its own rewards, but you are likely to enjoy the close view of adults feeding, grooming and resting as the youngsters frolic and swing from vines in a delightfully playful display. Bwindi Impenetrable Forest is a magnificent green swathe of dense rain forest, so ancient that survived the last ice age. A recently proclaimed World Heritage site, it's one of the most biologically diverse areas on earth and its unique, precious flora sustains roughly half of the world population of mountain gorillas – believed to number just 720.",
         activities: [
-          "Beach relaxation",
-          "Optional water sports or resort activities",
+          "First gorilla tracking experience",
+          "One hour with mountain gorillas",
+          "Forest exploration",
         ],
-        accommodation: "Sultan Sands Resort",
+        accommodation: "Silver Back Lodge (Mid Lodge Facility)",
         meals: {
           breakfast: true,
           lunch: true,
@@ -761,10 +796,84 @@ export const tourPackagesData: TourPackage[] = [
         },
       },
       {
-        title: "Departure Day",
-        location: "Sultan Sands to Zanzibar Airport",
-        description: "Transfer from Sultan Sands Resort to Zanzibar Airport.",
-        activities: ["Breakfast at the resort", "Transfer to Zanzibar Airport"],
+        title: "Second Gorilla Trekking Bwindi",
+        location: "Bwindi Impenetrable Forest",
+        description:
+          "After breakfast, you will go for the second gorilla track but in another group returning in the afternoon. Time permitting, spend the afternoon on a community foot safari to explore the life style of the people living and surrounding the park. Return to camp exhilarated to relieve the encounter with friends over a drink.",
+        activities: [
+          "Second gorilla tracking with different group",
+          "Community foot safari",
+          "Cultural interaction with local communities",
+        ],
+        accommodation: "Silver Back Lodge (Mid Lodge Facility)",
+        meals: {
+          breakfast: true,
+          lunch: true,
+          dinner: true,
+        },
+      },
+      {
+        title: "Bwindi Forest – Semuliki National Park",
+        location: "Bwindi to Semliki NP",
+        description:
+          "Begin your day with a cup of African coffee, ready for the drive to Semuliki Park North of Bwindi via Queen Elizabeth in to Fort Portal. The drive takes you through the unique western rift valley escarpment and the (southern part of Queen Elizabeth National Park) Ishasha sector where you will take on a mid morning game drive in search of tree climbing lions. Proceed to Semuliki Park this is a home to 53 mammals of which 27 are large mammals. 11 species are endemic to the park including the pygmy antelope and two flying squirrel species. It is also home to the peculiar water chevrotain, known as the 'fanged deer'.",
+        activities: [
+          "Drive to Semliki National Park",
+          "Game drive in Ishasha sector",
+          "Search for tree climbing lions",
+          "Arrival at Semliki",
+        ],
+        accommodation: "Semuliki Safari Lodge (High end facility)",
+        meals: {
+          breakfast: true,
+          lunch: true,
+          dinner: true,
+        },
+      },
+      {
+        title: "Semuliki National Park",
+        location: "Semliki National Park",
+        description:
+          "Morning after your breakfast is dedicated for a game drive. The park is home to forest elephant and buffalo which are smaller versions of their Savannah-dwelling relatives. It is also a home for over 53 mammals of which 27 are large mammals. 11 species are endemic to the park including the pygmy antelope and two flying squirrel species. It is also home to the peculiar water chevrotain, known as the 'fanged deer'. Afternoon will be for a boat ride along Lake Albert for an opportunity for birding look out for Blue Swallow, White-throated Blue Swallow, Swamp Palm Bulbul, Spotted Greenbul, White-starred Robin, and many other bird species.",
+        activities: [
+          "Morning game drive",
+          "Boat ride on Lake Albert",
+          "Extensive bird watching",
+          "Wildlife viewing",
+        ],
+        accommodation: "Semliki Safari Lodge (High end facility)",
+        meals: {
+          breakfast: true,
+          lunch: true,
+          dinner: true,
+        },
+      },
+      {
+        title: "Shoebill Hunt",
+        location: "Semliki National Park",
+        description:
+          "Morning search of the rare Shoebill Stock in the wildlife reserve and a visit to the hot springs. The Sempaya Hot Springs are Semuliki's most famous attraction. The 'male' spring, known as Bintente, measures 12m in diameter and is set in a lush swampy clearing. The 'female' spring Nyasimbi, meaning 'the female ancestors', is a boiling geyser (103C) which spurts bubbling water and steam up to two meters high – the steam cloud can be seen from as far as 2km away. Local people used to cook their food in these boiling pools. The afternoon is spent on relaxation and sightseeing around your lodge.",
+        activities: [
+          "Search for rare Shoebill Stork",
+          "Visit to Sempaya Hot Springs",
+          "Relaxation and lodge sightseeing",
+        ],
+        accommodation: "Semuliki Safari Lodge (High end facility)",
+        meals: {
+          breakfast: true,
+          lunch: true,
+          dinner: true,
+        },
+      },
+      {
+        title: "Kampala – Entebbe Out",
+        location: "Semliki to Entebbe",
+        description:
+          "Today is dedicated for return to Kampala and Entebbe direct to airport to catch up with your out bound flight back to Tanzania.",
+        activities: [
+          "Return journey to Kampala and Entebbe",
+          "Airport transfer for departure",
+        ],
         accommodation: "N/A (end of tour)",
         meals: {
           breakfast: true,
@@ -775,27 +884,321 @@ export const tourPackagesData: TourPackage[] = [
     ],
     inclusions: [
       "Airport transfers",
-      "Accommodation and meals as per the itinerary",
-      "Inland transfers or Transportation",
-      "Stone town tour on arrival",
-      "Spice tour on the way to Sultan sands with special locally prepared spice lunch",
-      "Taste of the tropical fruits while on the plantations",
-      "Bottled drinking water while on tours and transfers",
-      "Travel permit",
-      "Guide service",
-      "Entry fees",
-      "Government tax and VAT",
+      "Transportation in a 4x4 safari vehicle",
+      "English-speaking driver/guide",
+      "Accommodation as per itinerary",
+      "Meals as specified in the itinerary",
+      "Park entrance fees",
+      "Two gorilla trekking permits",
+      "Game drives",
+      "Boat rides",
+      "Cultural visits",
+      "Hot springs visit",
+      "Bottled water during the safari",
     ],
     exclusions: [
-      "Local and international flights",
-      "Personal Travel insurance",
-      "Visa Fees",
-      "Drinks, cigarettes, tips, souvenirs and any other items of personal nature",
+      "International flights",
+      "Visa fees",
+      "Travel insurance",
+      "Personal expenses",
+      "Tips and gratuities",
+      "Alcoholic beverages",
+      "Activities not mentioned in the itinerary",
     ],
-    tourType: "Cultural & Beach",
+    tourType: "Gorilla & Wildlife Safari",
+    groupSize: 6,
+    meals: "Full Board (as per itinerary)",
+    featured: true,
+    category: "gorilla",
+  },
+  {
+    id: "ugandan-golf-experience",
+    title: "Ugandan Golf Experience",
+    slug: "ugandan-golf-experience",
+    location: "Entebbe & Kampala",
+    duration: "4 Days / 3 Nights",
+    price: 800,
+    rating: 4.5,
+    image: "/images/uganda-golf.jpg",
+    shortDescription:
+      "Experience Uganda's golf courses combined with vibrant nightlife and cultural entertainment in this unique 4-day golf tour.",
+    description:
+      "This unique golf experience combines rounds at Uganda's premier golf clubs with cultural entertainment and nightlife. Play at Entebbe Golf Club and Kampala Golf Club while experiencing the vibrant culture and entertainment that Uganda has to offer.",
+    highlights: [
+      "Round of Golf at Entebbe Golf Club",
+      "Round of Golf at Kampala Golf Club",
+      "Entebbe and Kampala nightlife experience",
+      "Optional Kampala city tour",
+      "Visit to craft markets",
+      "Uganda Cultural entertainment at Ndere Centre",
+      "Local and international dining options",
+    ],
+    itinerary: [
+      {
+        title: "Arrival Night",
+        location: "Entebbe",
+        description:
+          "Arrival Entebbe International Airport. Your meet at the airport by our Representative then transferred to Hotel in Entebbe for Overnight",
+        activities: [
+          "Airport pickup",
+          "Transfer to Entebbe hotel",
+          "Evening at leisure",
+        ],
+        accommodation: "Entebbe Hotel",
+        meals: {
+          breakfast: false,
+          lunch: false,
+          dinner: true,
+        },
+      },
+      {
+        title: "Golf and Nightlife in Entebbe",
+        location: "Entebbe",
+        description:
+          "Breakfast then depart for our first Round of Golf in Uganda at the Entebbe Golf club after the round of Golf late Lunch Local Uganda Meal or International Meal. After lunch transfer to our hotel for rest and reboot for Entebbe Night Life. 8 pm pickup from the Hotel after dinner or Dinner out of hotel. After dinner Visit to Red Rostra then on Night Riders and 12am Arrival @ Club X. Departure at Leisure.",
+        activities: [
+          "Round of Golf at Entebbe Golf Club",
+          "Local or international lunch",
+          "Rest at hotel",
+          "Entebbe nightlife tour",
+          "Visit to Red Rostra, Night Riders, and Club X",
+        ],
+        accommodation: "Entebbe Hotel",
+        meals: {
+          breakfast: true,
+          lunch: true,
+          dinner: true,
+        },
+      },
+      {
+        title: "Transfer to Kampala and Golf",
+        location: "Kampala",
+        description:
+          "Late Breakfast Checkout then depart for Kampala Optional Kampala City Tour inclusive of Craft Markets and Lunch Break. After Lunch Check-in Kampala Hotel in Time for short rest then Late Afternoon Depart to the Kampala Golf club to Take in a round of Golf late Evening departure from the Golf to Hotel refreshing then take Kampala city the town that doesn't sleep. First stop Top secret location for Two Hours show then on to next stop and Last to Night Club. Departure at Leisure.",
+        activities: [
+          "Optional Kampala city tour",
+          "Visit to craft markets",
+          "Round of Golf at Kampala Golf Club",
+          "Kampala nightlife experience",
+          "Top secret location show",
+          "Night club visit",
+        ],
+        accommodation: "Kampala Hotel",
+        meals: {
+          breakfast: true,
+          lunch: true,
+          dinner: true,
+        },
+      },
+      {
+        title: "Full Day and Departure",
+        location: "Kampala to Entebbe",
+        description:
+          "Full day Sunday in Uganda. Breakfast at Leisure. All Morning at Leisure or An Early Round of Golf Afternoon Pick for Lunch. After Lunch shopping then Return to the Hotel Rest of the day at Leisure plus parking. Evening departure for the Ndere Centre for a Uganda Cultural entertainment and Dinner. Then departure for Entebbe Airport for Your Flight Back home.",
+        activities: [
+          "Morning at leisure or optional golf round",
+          "Afternoon shopping",
+          "Uganda Cultural entertainment at Ndere Centre",
+          "Cultural dinner",
+          "Transfer to Entebbe Airport",
+        ],
+        accommodation: "N/A (end of tour)",
+        meals: {
+          breakfast: true,
+          lunch: true,
+          dinner: true,
+        },
+      },
+    ],
+    inclusions: [
+      "Airport transfers",
+      "Transportation throughout the tour",
+      "Accommodation as per itinerary",
+      "Meals as specified in the itinerary",
+      "Golf rounds at Entebbe and Kampala Golf Clubs",
+      "Nightlife tours and entertainment",
+      "Cultural entertainment at Ndere Centre",
+      "Optional city tours",
+      "Professional guide services",
+    ],
+    exclusions: [
+      "International flights",
+      "Visa fees",
+      "Travel insurance",
+      "Personal expenses",
+      "Golf equipment rental",
+      "Alcoholic beverages (unless specified)",
+      "Tips and gratuities",
+      "Activities not mentioned in the itinerary",
+    ],
+    tourType: "Golf & Entertainment",
     groupSize: 8,
+    meals: "Full Board",
+    featured: false,
+    category: "golf",
+  },
+  {
+    id: "uganda-martyrs-trail",
+    title: "Faith Based Tourism Experience - THE UGANDA MARTYRS TRAIL 2025",
+    slug: "uganda-martyrs-trail",
+    location: "Multiple Religious Sites",
+    duration: "7 Days / 6 Nights",
+    price: 900,
+    rating: 4.7,
+    image: "/images/martyrs-trail.jpg",
+    shortDescription:
+      "Follow the footsteps of the Uganda Martyrs on this spiritual journey through significant religious and historical sites.",
+    description:
+      "This faith-based tourism experience takes you through the historical journey of the Uganda Martyrs, visiting significant religious sites and following their footsteps from Kigungu to Namugongo. Experience the rich religious heritage and cultural significance of these sacred places.",
+    highlights: [
+      "Visit Kigungu Landing site where first missionaries arrived",
+      "Follow the martyrs' journey from Munyonyo to Namugongo",
+      "Visit Namugongo Martyrs Shrine",
+      "Attend Uganda Martyrs Day Celebrations",
+      "Explore religious and historical sites",
+      "Cultural interaction with local communities",
+      "Wildlife Educational Center visit",
+      "Lubega Cathedral visit",
+    ],
+    itinerary: [
+      {
+        title: "Arrival",
+        location: "Entebbe",
+        description:
+          "Arrival Entebbe International Airport meet assist by our representative then transfer to Entebbe Hotel for Dinner and Overnight.",
+        activities: [
+          "Airport pickup",
+          "Transfer to Entebbe Hotel",
+          "Evening rest",
+        ],
+        accommodation: "Entebbe Hotel",
+        meals: {
+          breakfast: false,
+          lunch: false,
+          dinner: true,
+        },
+      },
+      {
+        title: "Kigungu Landing Site and Wildlife Center",
+        location: "Kigungu",
+        description:
+          "An Early Breakfast then drive to Kigungu Landing site where the first White Father Simeon Lourdel and Brother Delmas Amans landed on the Ugandan Main Land then Buganda Kingdom. They arrived on the17th of February 1879 from Bugoma Ssese where they had departed On Sunday 16th February 1879. The pair stayed in the Kigungu area formerly called Kyettale. On arrival we meet with the Religious leaders or Representatives of the area and engage in Community activates plus getting to understand the history of the local and the religious impact. This is a Full day activity that will include lunch. Late Afternoon departure back to the hotel for a short rest. Later in the Evening we depart for a walking Tour to the Wildlife Educational Center to have a Wildlife experience. After the Tour of the Wildlife Educational Center that ends at our camp fire Dinner location. After dinner we depart for hotel.",
+        activities: [
+          "Visit to Kigungu Landing site",
+          "Meet with religious leaders",
+          "Community activities and historical learning",
+          "Walking tour to Wildlife Educational Center",
+          "Camp fire dinner",
+        ],
+        accommodation: "Entebbe Hotel",
+        meals: {
+          breakfast: true,
+          lunch: true,
+          dinner: true,
+        },
+      },
+      {
+        title: "Munyonyo via Kisubi and Historical Sites",
+        location: "Munyonyo",
+        description:
+          "Late breakfast then depart for Munyonyo via Kisubi where Father Simeon and Brother Delmas Amans Spent a night on the 19th day of February 1879 on their 42 kilometer Journey on foot from Bugonga to Lubega to Meet Kabaka Muteesa on their departure the two left behind a peg they had carried from Tanganyika it has since grown to become this special Mapeera Tree. Our next stop is at Kitebi where the Father Simeon and Bro Delmas stayed from Friday 21st February to the 7th of March 1879 waiting for clearance to meet Kabaka Muteesa 1 under the custody of Amir Ssekikuubo who was in charge of roads in the Buganda Kingdom at the time. We then proceed to Nalukolongo the location offered by Kabaka Mwanga to the Catholic Missionaries Father Simeon Lourdes, Pierregiraud and Delmas Amans to preach. They returned to these locations from exile on the 14th of July 1885. From Nalukolongo we stop for Lunch. After lunch we visit Lubega Cathedral this was the site for Kabaka Muteesa official palace from where he invited the Missionaries. After our Visit we drive to our Hotel in Kampala.",
+        activities: [
+          "Visit to Kisubi and the special Mapeera Tree",
+          "Stop at Kitebi historical site",
+          "Visit to Nalukolongo",
+          "Lunch break",
+          "Visit to Lubega Cathedral",
+          "Transfer to Kampala hotel",
+        ],
+        accommodation: "Kampala Hotel",
+        meals: {
+          breakfast: true,
+          lunch: true,
+          dinner: true,
+        },
+      },
+      {
+        title: "Munyonyo Martyrdom Sites and Journey to Namugongo",
+        location: "Munyonyo to Namugongo",
+        description:
+          "Late Breakfast then depart for Munyonyo to Visit first the Martyrdom Spot of St Denis Ssebugwawo. St Dennis Ssebugwawo was speared on the 25th day of May 1886 and was then beheaded the next day behind Kabaka Mwanga's Palace and his body was left to the Vultures, on the same day St. Andrew Kaggwa was also killed. On the 26th of May 1886 the next day. On the 26th Day of May 1886 at the same location Munyonyo Kabaka Mwanga made the Decision to kill and order Mukaajanga his chief executioner to transfer all the Christian to Namungongo. From Munyonyo, we start our journey in the footsteps of the Martyrs to Namungongo, from Munyounyo we drive to Ttaka Jjunge formily known as Tabataba this was the location where Mukaajanga made preparations for the being of the Death – March to Namugongo at this location Pontian Ngondwe was spear to death and his corpse was hacked to pieces and scattering his remains in all directions. We then continue to Mengo where Joseph Mukasa Balikuddembe was killed six months earlier at this location the Martyrs spent a night. Athanasius Bazzekuketta Volunteered to be killed and was taken to the foot of Mengo Hill and Killed at back of the present day Nakivubo Stadium on the 27th of May 1886. From Mengo the group more to Namugongo via Lubaawo hill where Gonzaga Gonza unable to proceed was killed. Evening arrival at Namugongo. We check in our Hotel.",
+        activities: [
+          "Visit St Denis Ssebugwawo martyrdom spot",
+          "Follow the martyrs' death march route",
+          "Stop at Ttaka Jjunge (Tabataba)",
+          "Visit Mengo historical sites",
+          "Stop at Lubaawo hill",
+          "Arrival at Namugongo",
+        ],
+        accommodation: "Hotel near Namugongo",
+        meals: {
+          breakfast: true,
+          lunch: true,
+          dinner: true,
+        },
+      },
+      {
+        title: "Uganda Martyrs Day Celebrations",
+        location: "Namugongo Shrine",
+        description:
+          "Very Early Breakfast then depart for the Namugongo Shrine to attend the Uganda Martyrs Day Celebrations. Full day at Namugongo Shine.",
+        activities: [
+          "Attend Uganda Martyrs Day Celebrations",
+          "Full day at Namugongo Shrine",
+          "Religious ceremonies and prayers",
+          "Cultural and spiritual activities",
+        ],
+        accommodation: "Hotel near Namugongo",
+        meals: {
+          breakfast: true,
+          lunch: true,
+          dinner: true,
+        },
+      },
+      {
+        title: "Departure",
+        location: "Namugongo to Entebbe",
+        description:
+          "Late Breakfast check out then a visit to Namugongo both Shrines then depart for Entebbe International Airport for our flight out.",
+        activities: [
+          "Visit to both Namugongo Shrines",
+          "Final prayers and reflection",
+          "Transfer to Entebbe International Airport",
+        ],
+        accommodation: "N/A (end of tour)",
+        meals: {
+          breakfast: true,
+          lunch: false,
+          dinner: false,
+        },
+      },
+    ],
+    inclusions: [
+      "Airport transfers",
+      "Transportation throughout the tour",
+      "Accommodation as per itinerary",
+      "Meals as specified in the itinerary",
+      "Professional guide with religious knowledge",
+      "Entry fees to all religious sites",
+      "Community interaction activities",
+      "Wildlife Educational Center visit",
+      "Uganda Martyrs Day Celebrations attendance",
+      "Bottled water during tours",
+    ],
+    exclusions: [
+      "International flights",
+      "Visa fees",
+      "Travel insurance",
+      "Personal expenses",
+      "Tips and gratuities",
+      "Alcoholic beverages",
+      "Activities not mentioned in the itinerary",
+      "Personal religious items",
+    ],
+    tourType: "Faith-Based Tourism",
+    groupSize: 10,
     meals: "Full Board (as per itinerary)",
     featured: false,
-    category: "cultural",
+    category: "faith",
   },
 ];

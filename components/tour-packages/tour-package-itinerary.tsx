@@ -24,7 +24,7 @@ export function TourPackageItinerary({ itinerary }: TourPackageItineraryProps) {
   };
 
   return (
-    <section className="bg-brand-green-50 pattern-bg py-16">
+    <section className="pattern-bg bg-brand-green-50 py-16">
       <div className="container-custom">
         <motion.div
           className="mx-auto mb-12 max-w-3xl text-center"

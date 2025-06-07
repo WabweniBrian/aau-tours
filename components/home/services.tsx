@@ -1,12 +1,12 @@
 import React from "react";
 import { SectionHeading } from "../common/section-heading";
-import { services } from "@/data/home";
 import Image from "next/image";
 import Link from "next/link";
+import { services } from "@/data/services";
 
 const Services = () => {
   return (
-    <section className="section-padding bg-brand-green-50/10 dots-bg">
+    <section className="section-padding dots-bg bg-brand-green-50/10">
       <div className="container-custom">
         <SectionHeading
           title="Our Services"
@@ -31,7 +31,7 @@ const Services = () => {
               <h3 className="mb-3 text-xl font-bold">{service.title}</h3>
               <p className="mb-4 text-foreground/70">{service.description}</p>
               <Link
-                href="/services#services-list"
+                href={`/services#${service.id}`}
                 className="inline-flex items-center font-medium text-primary hover:underline"
               >
                 Learn More

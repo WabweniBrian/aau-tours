@@ -66,13 +66,16 @@ export function TourPackageHero({ tourPackage }: TourPackageHeroProps) {
             </div>
 
             <div className="flex flex-wrap gap-4">
-              {/* <Link
-                href={`/booking/${tourPackage.slug}`}
-                className="btn-primary"
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center rounded-full bg-primary px-6 py-3 text-white transition-colors hover:bg-primary/90"
               >
                 Book Now - ${tourPackage.price} per person
-              </Link> */}
-              <Link href="/contact" className="btn-outline-white">
+              </Link>
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center rounded-full border-2 border-white px-6 py-3 text-white transition-colors hover:bg-white hover:text-black"
+              >
                 Ask a Question
               </Link>
             </div>

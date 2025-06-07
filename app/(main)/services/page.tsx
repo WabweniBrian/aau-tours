@@ -19,8 +19,8 @@ export default function ServicesPage() {
     <>
       <ServicesHero />
       <ServicesList />
-      <ServiceProcess />
-      <ServiceComparison />
+      {/* <ServiceProcess /> */}
+      {/* <ServiceComparison /> */}
       <ServiceTestimonials />
       <ServiceBooking />
       <CTA />

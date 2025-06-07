@@ -6,7 +6,7 @@ import Image from "next/image";
 
 export function TourPackagesCTA() {
   return (
-    <section className="bg-brand-green-50/10 pattern-bg py-16">
+    <section className="pattern-bg bg-brand-green-50/10 py-16">
       <div className="container-custom">
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
           <motion.div
@@ -89,7 +89,7 @@ export function TourPackagesCTA() {
           >
             <div className="relative z-10 aspect-[4/3] overflow-hidden rounded-3xl shadow-xl">
               <Image
-                src="/images/uganda-wildlife.jpg"
+                src="/images/custom-itenaries.jpg"
                 alt="Custom tour experience"
                 fill
                 className="object-cover"

@@ -102,7 +102,7 @@ export function ServiceBooking() {
   };
 
   return (
-    <section className="bg-white py-24">
+    <section className="bg-white py-24" id="service-booking">
       <div className="container-custom">
         <div className="mx-auto max-w-4xl">
           <div className="mb-12 text-center">
@@ -130,7 +130,7 @@ export function ServiceBooking() {
 
           {isSuccess ? (
             <motion.div
-              className="bg-brand-green-50 rounded-3xl p-12 text-center"
+              className="rounded-3xl bg-brand-green-50 p-12 text-center"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5 }}

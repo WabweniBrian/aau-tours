@@ -100,7 +100,7 @@ export function TourPackageBookingInfo({
             transition={{ duration: 0.5, delay: 0.3 }}
             viewport={{ once: true }}
           >
-            <div className="bg-brand-green-50 sticky top-24 rounded-2xl p-6">
+            <div className="sticky top-24 rounded-2xl bg-brand-green-50 p-6">
               <h3 className="mb-6 text-xl font-bold">Book This Tour</h3>
               <p className="mb-6 text-foreground/70">
                 Ready to embark on this adventure? Contact us to check

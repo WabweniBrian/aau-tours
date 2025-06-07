@@ -130,15 +130,15 @@ export function TourPackageOverview({ tourPackage }: TourPackageOverviewProps) {
                     </div>
                     <div className="flex items-center">
                       <Wifi size={16} className="mr-2 text-primary" />
-                      <span className="text-sm">Wifi (at lodges)</span>
+                      <span className="text-sm">Guide Service</span>
                     </div>
                     <div className="flex items-center">
                       <Coffee size={16} className="mr-2 text-primary" />
-                      <span className="text-sm">Refreshments</span>
+                      <span className="text-sm">Meals Included</span>
                     </div>
                     <div className="flex items-center">
                       <Check size={16} className="mr-2 text-primary" />
-                      <span className="text-sm">Guide</span>
+                      <span className="text-sm">Park Fees</span>
                     </div>
                   </div>
                 </div>
