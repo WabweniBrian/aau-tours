@@ -29,14 +29,14 @@ const navLinks = [
     title: "About Us",
     href: "/about",
   },
-  {
-    title: "Destinations",
-    href: "/destinations",
-    children: destinationsData.map((dest) => ({
-      title: dest.title,
-      href: `/destinations/${dest.slug}`,
-    })),
-  },
+  // {
+  //   title: "Destinations",
+  //   href: "/destinations",
+  //   children: destinationsData.map((dest) => ({
+  //     title: dest.title,
+  //     href: `/destinations/${dest.slug}`,
+  //   })),
+  // },
   {
     title: "Tour Packages",
     href: "/tour-packages",
