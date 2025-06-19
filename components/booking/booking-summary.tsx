@@ -300,9 +300,7 @@ export function BookingSummary({
             <div className="mb-6 space-y-3">
               <div className="flex justify-between">
                 <span>Tour Price</span>
-                <span>
-                  ${tourPackage.price} × {bookingData.travelers}
-                </span>
+                <span>$234</span>
               </div>
 
               <div className="flex justify-between border-t border-gray-200 pt-3 text-lg font-medium">

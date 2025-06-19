@@ -57,8 +57,6 @@ export function TourPackagesList({ packages }: TourPackagesListProps) {
                 location={tourPackage.location}
                 duration={tourPackage.duration}
                 image={tourPackage.image}
-                price={tourPackage.price}
-                rating={tourPackage.rating}
                 featured={tourPackage.featured}
                 slug={tourPackage.slug}
               />
@@ -74,8 +72,6 @@ export function TourPackagesList({ packages }: TourPackagesListProps) {
                 location={tourPackage.location}
                 duration={tourPackage.duration}
                 image={tourPackage.image}
-                price={tourPackage.price}
-                rating={tourPackage.rating}
                 description={tourPackage.shortDescription}
                 highlights={tourPackage.highlights.slice(0, 3)}
                 featured={tourPackage.featured}

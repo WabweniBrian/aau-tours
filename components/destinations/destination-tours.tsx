@@ -15,7 +15,7 @@ export function DestinationTours({
   destinationName,
 }: DestinationToursProps) {
   return (
-    <section className="bg-brand-green-50/10 pattern-bg py-16">
+    <section className="pattern-bg bg-brand-green-50/10 py-16">
       <div className="container-custom">
         <motion.div
           className="mx-auto mb-12 max-w-3xl text-center"
@@ -41,8 +41,6 @@ export function DestinationTours({
                 location={tour.location}
                 duration={tour.duration}
                 image={tour.image}
-                price={tour.price}
-                rating={tour.rating}
                 featured={tour.featured}
                 slug={tour.slug}
               />
