@@ -21,8 +21,8 @@ export default function AboutPage() {
       <OurStory />
       <CoreValues />
       <MeetTheTeam />
-      <Achievements />
-      <AboutFaq />
+      {/* <Achievements /> */}
+      {/* <AboutFaq /> */}
       <CTA />
     </>
   );

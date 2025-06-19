@@ -130,13 +130,11 @@ export function Footer() {
               </li>
               <li className="flex items-center">
                 <Phone size={20} className="mr-3 flex-shrink-0 text-primary" />
-                <span className="text-white/80">
-                  +256 752 413 322 / +256 756 555 777
-                </span>
+                <span className="text-white/80">+256756555777</span>
               </li>
               <li className="flex items-center">
                 <Mail size={20} className="mr-3 flex-shrink-0 text-primary" />
-                <span className="text-white/80">info@aautours.com</span>
+                <span className="text-white/80">aautours.travel@aau.co.ug</span>
               </li>
             </ul>
             <div className="mt-6 rounded-2xl bg-white/10 p-4">

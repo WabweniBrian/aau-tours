@@ -18,12 +18,14 @@ import {
   LogOut,
 } from "lucide-react";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 
 export default function AccountLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  return notFound();
   return (
     <div className="container-custom py-8">
       <div className="flex flex-col gap-4 md:flex-row">

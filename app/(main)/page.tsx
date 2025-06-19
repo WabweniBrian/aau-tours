@@ -30,17 +30,14 @@ export default function HomePage() {
       {/* Services Section */}
       <Services />
 
-      {/* Testimonials */}
-      <Testimonials />
-
-      {/* Partners Section */}
-      <PartnersSection />
-
       {/* Quick Contact Form */}
-      <QuickContactForm />
+      {/* <QuickContactForm /> */}
 
       {/* Call to Action */}
       <CTA />
+
+      {/* Partners Section */}
+      <PartnersSection />
     </>
   );
 }

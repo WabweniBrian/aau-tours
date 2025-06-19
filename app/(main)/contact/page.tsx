@@ -11,14 +11,18 @@ export const metadata: Metadata = {
     "Get in touch with our team for any inquiries about our tour packages, destinations, or custom travel arrangements in Uganda.",
 };
 
-export default function ContactPage() {
+export default function ContactPage({
+  searchParams,
+}: {
+  searchParams: { message: string };
+}) {
   return (
-    <main className="bg-brand-green-50 min-h-screen">
+    <main className="min-h-screen bg-brand-green-50">
       <ContactHero />
 
       <section className="mx-auto max-w-7xl px-4 py-12 md:py-16">
         <div className="grid grid-cols-1 gap-4 md:gap-12 lg:grid-cols-2">
-          <ContactForm />
+          <ContactForm message={searchParams.message} />
           <ContactInfo />
         </div>
       </section>

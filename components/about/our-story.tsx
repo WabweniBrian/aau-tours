@@ -57,18 +57,10 @@ export function OurStory() {
           className="mx-auto mb-16 max-w-3xl text-center"
           style={{ opacity, y }}
         >
-          <h2 className="heading-md mb-6">Our Journey</h2>
-          <p className="text-lg text-foreground/70">
-            From our humble beginnings as a small tour operator to becoming one
-            of Uganda&apos;s premier travel companies, our journey has been
-            defined by passion, perseverance, and a deep love for showcasing the
-            beauty of the Pearl of Africa.
-          </p>
+          <h2 className="heading-md mb-6">Our Mission & Vision</h2>
         </motion.div>
 
-        {/* Creative Timeline */}
-        <div className="relative">
-          {/* Center line */}
+        {/* <div className="relative">
           <div className="absolute left-1/2 h-full w-1 -translate-x-1/2 transform rounded-full bg-primary/20"></div>
 
           {timelineEvents.map((event, index) => (
@@ -103,12 +95,12 @@ export function OurStory() {
               <div className="w-1/2"></div>
             </motion.div>
           ))}
-        </div>
+        </div> */}
 
         {/* Mission & Vision */}
-        <div className="mt-24 grid grid-cols-1 gap-12 md:grid-cols-2">
+        <div className="grid grid-cols-1 gap-12 md:grid-cols-2">
           <motion.div
-            className="bg-brand-green-50 relative overflow-hidden rounded-3xl p-8"
+            className="relative overflow-hidden rounded-3xl bg-brand-green-50 p-8"
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
@@ -141,7 +133,7 @@ export function OurStory() {
           </motion.div>
 
           <motion.div
-            className="bg-brand-orange-50 relative overflow-hidden rounded-3xl p-8"
+            className="relative overflow-hidden rounded-3xl bg-brand-orange-50 p-8"
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}

@@ -31,6 +31,8 @@ export function NewsletterSubscription() {
     }
   };
 
+  return null;
+
   return (
     <section className="bg-gradient-to-r from-primary/10 to-secondary/10 py-16">
       <div className="container-custom">

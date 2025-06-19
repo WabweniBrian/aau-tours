@@ -2,6 +2,7 @@ import { BlogHero } from "@/components/blog/blog-hero";
 import { BlogList } from "@/components/blog/blog-list";
 import { blogPostsData } from "@/data/blog-posts";
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 
 export const metadata: Metadata = {
   title: "Blog | AAU Tours and Travel",
@@ -10,6 +11,7 @@ export const metadata: Metadata = {
 };
 
 export default function BlogPage() {
+  return notFound();
   return (
     <>
       <BlogHero />

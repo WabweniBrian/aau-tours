@@ -14,10 +14,10 @@ import {
 export function MeetTheTeam() {
   const teamMembers = [
     {
-      id: "member1",
-      name: "David Mukasa",
-      role: "Founder & CEO",
-      bio: "With over 20 years in the tourism industry, David founded AAU Tours and Travel with a vision to showcase Uganda's natural beauty to the world. His passion for conservation and sustainable tourism has shaped the company's core values.",
+      id: "felix",
+      name: "Felix Odonkara",
+      role: "Director",
+      bio: "Felix plays a vital role in steering the strategic direction of the company. His leadership and commitment to excellence contribute significantly to the success of the team.",
       image: "/images/avatar.png",
       social: {
         facebook: "#",
@@ -26,10 +26,10 @@ export function MeetTheTeam() {
       },
     },
     {
-      id: "member2",
-      name: "Sarah Namukasa",
-      role: "Operations Director",
-      bio: "Sarah oversees all tour operations, ensuring every client receives exceptional service. Her attention to detail and commitment to excellence have been instrumental in building our reputation for quality experiences.",
+      id: "edirisa",
+      name: "Edirisa Nsubuga",
+      role: "Director",
+      bio: "Edirisa brings experience and insight to the board, guiding major decisions and fostering growth opportunities within the tourism sector.",
       image: "/images/avatar.png",
       social: {
         facebook: "#",
@@ -38,10 +38,10 @@ export function MeetTheTeam() {
       },
     },
     {
-      id: "member3",
-      name: "Robert Kigozi",
-      role: "Head Safari Guide",
-      bio: "With extensive knowledge of Uganda's wildlife and natural habitats, Robert leads our team of expert guides. His infectious enthusiasm and storytelling abilities make every safari an unforgettable adventure.",
+      id: "albert",
+      name: "Albert Ofong",
+      role: "Managing Director",
+      bio: "Albert oversees all aspects of the company’s operations with a hands-on leadership style. His experience ensures consistent delivery of exceptional travel experiences.",
       image: "/images/avatar.png",
       social: {
         facebook: "#",
@@ -50,22 +50,10 @@ export function MeetTheTeam() {
       },
     },
     {
-      id: "member4",
-      name: "Grace Atwine",
-      role: "Customer Experience Manager",
-      bio: "Grace ensures that every aspect of your journey with us exceeds expectations. From your first inquiry to your return home, she works tirelessly to create seamless, personalized experiences for all our clients.",
-      image: "/images/avatar.png",
-      social: {
-        facebook: "#",
-        twitter: "#",
-        linkedin: "#",
-      },
-    },
-    {
-      id: "member5",
-      name: "Joseph Okello",
-      role: "Conservation Specialist",
-      bio: "Joseph leads our sustainability initiatives and ensures our tours contribute positively to conservation efforts. His background in environmental science brings valuable expertise to our eco-tourism programs.",
+      id: "joe",
+      name: "Joe Burua",
+      role: "Head of Operations / General Manager",
+      bio: "Joe is responsible for day-to-day operations, ensuring smooth coordination across all departments to meet the highest service standards.",
       image: "/images/avatar.png",
       social: {
         facebook: "#",

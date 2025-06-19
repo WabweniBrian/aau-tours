@@ -127,28 +127,6 @@ export function ServicesList() {
             )}
           </div>
         ))}
-
-        {/* Call to Action */}
-        <motion.div
-          className="mx-auto mt-12 max-w-3xl text-center"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-        >
-          <h3 className="mb-4 text-2xl font-bold">Need a Custom Service?</h3>
-          <p className="mb-6 text-foreground/70">
-            Don&apos;t see exactly what you&apos;re looking for? We specialize
-            in creating custom travel solutions tailored to your specific needs.
-          </p>
-          <Link
-            href="/contact"
-            className="inline-flex items-center rounded-full border-2 border-primary bg-transparent px-6 py-3 text-primary transition-colors hover:bg-primary hover:text-white"
-          >
-            Contact Us for Custom Solutions{" "}
-            <ChevronRight size={16} className="ml-2" />
-          </Link>
-        </motion.div>
       </div>
     </section>
   );

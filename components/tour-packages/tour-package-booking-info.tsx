@@ -109,12 +109,6 @@ export function TourPackageBookingInfo({
 
               <div className="mb-6 space-y-4">
                 <div className="flex items-center justify-between border-b border-gray-200 pb-2">
-                  <span className="font-medium">Price per person:</span>
-                  <span className="text-xl font-bold text-primary">
-                    ${tourPackage.price}
-                  </span>
-                </div>
-                <div className="flex items-center justify-between border-b border-gray-200 pb-2">
                   <span className="font-medium">Duration:</span>
                   <span>{tourPackage.duration}</span>
                 </div>
@@ -129,7 +123,7 @@ export function TourPackageBookingInfo({
               </div>
 
               <Link
-                href="/contact"
+                href={`/contact?message=${tourPackage.title} - Booking`}
                 className="inline-flex w-full items-center justify-center rounded-full bg-primary px-6 py-3 text-white transition-colors hover:bg-primary/90"
               >
                 Book Now
@@ -137,13 +131,15 @@ export function TourPackageBookingInfo({
 
               <div className="mt-6 text-center">
                 <p className="text-sm text-foreground/70">
-                  Need more information? Call us at{" "}
-                  <a
-                    href="tel:+256123456789"
-                    className="font-medium text-primary"
-                  >
-                    +256 123 456 789
-                  </a>
+                  Need more information? Send us a WhatsApp message
+                  <button className="ml-1 inline-flex items-center rounded-full bg-green-500 px-4 py-2 text-white transition-colors hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50">
+                    <a
+                      href="https://wa.me/256756555777"
+                      className="font-medium text-white"
+                    >
+                      Whatsapp
+                    </a>
+                  </button>
                 </p>
               </div>
             </div>

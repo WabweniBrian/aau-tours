@@ -49,7 +49,7 @@ export function TourPackageOverview({ tourPackage }: TourPackageOverviewProps) {
                   <li key={index} className="flex items-start">
                     <Check
                       size={20}
-                      className="mr-2 mt-1 flex-shrink-0 text-primary"
+                      className="mr-2 mt-1 shrink-0 text-primary"
                     />
                     <span>{highlight}</span>
                   </li>
@@ -71,7 +71,7 @@ export function TourPackageOverview({ tourPackage }: TourPackageOverviewProps) {
               <div className="space-y-4">
                 <div className="flex items-start">
                   <div className="mr-4 flex h-10 w-10 items-center justify-center rounded-full bg-primary/10">
-                    <Clock size={20} className="text-primary" />
+                    <Clock size={20} className="shrink-0 text-primary" />
                   </div>
                   <div>
                     <p className="font-medium">Duration</p>
@@ -81,7 +81,7 @@ export function TourPackageOverview({ tourPackage }: TourPackageOverviewProps) {
 
                 <div className="flex items-start">
                   <div className="mr-4 flex h-10 w-10 items-center justify-center rounded-full bg-primary/10">
-                    <Calendar size={20} className="text-primary" />
+                    <Calendar size={20} className="shrink-0 text-primary" />
                   </div>
                   <div>
                     <p className="font-medium">Tour Type</p>
@@ -91,7 +91,7 @@ export function TourPackageOverview({ tourPackage }: TourPackageOverviewProps) {
 
                 <div className="flex items-start">
                   <div className="mr-4 flex h-10 w-10 items-center justify-center rounded-full bg-primary/10">
-                    <Users size={20} className="text-primary" />
+                    <Users size={20} className="shrink-0 text-primary" />
                   </div>
                   <div>
                     <p className="font-medium">Group Size</p>
@@ -103,7 +103,7 @@ export function TourPackageOverview({ tourPackage }: TourPackageOverviewProps) {
 
                 <div className="flex items-start">
                   <div className="mr-4 flex h-10 w-10 items-center justify-center rounded-full bg-primary/10">
-                    <MapPin size={20} className="text-primary" />
+                    <MapPin size={20} className="shrink-0 text-primary" />
                   </div>
                   <div>
                     <p className="font-medium">Location</p>
@@ -113,7 +113,7 @@ export function TourPackageOverview({ tourPackage }: TourPackageOverviewProps) {
 
                 <div className="flex items-start">
                   <div className="mr-4 flex h-10 w-10 items-center justify-center rounded-full bg-primary/10">
-                    <Utensils size={20} className="text-primary" />
+                    <Utensils size={20} className="shrink-0 text-primary" />
                   </div>
                   <div>
                     <p className="font-medium">Meals</p>
@@ -125,19 +125,22 @@ export function TourPackageOverview({ tourPackage }: TourPackageOverviewProps) {
                   <h4 className="mb-3 font-bold">Amenities</h4>
                   <div className="grid grid-cols-2 gap-3">
                     <div className="flex items-center">
-                      <Car size={16} className="mr-2 text-primary" />
+                      <Car size={16} className="mr-2 shrink-0 text-primary" />
                       <span className="text-sm">Transportation</span>
                     </div>
                     <div className="flex items-center">
-                      <Wifi size={16} className="mr-2 text-primary" />
+                      <Wifi size={16} className="mr-2 shrink-0 text-primary" />
                       <span className="text-sm">Guide Service</span>
                     </div>
                     <div className="flex items-center">
-                      <Coffee size={16} className="mr-2 text-primary" />
+                      <Coffee
+                        size={16}
+                        className="mr-2 shrink-0 text-primary"
+                      />
                       <span className="text-sm">Meals Included</span>
                     </div>
                     <div className="flex items-center">
-                      <Check size={16} className="mr-2 text-primary" />
+                      <Check size={16} className="mr-2 shrink-0 text-primary" />
                       <span className="text-sm">Park Fees</span>
                     </div>
                   </div>

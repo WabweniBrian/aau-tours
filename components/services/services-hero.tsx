@@ -97,8 +97,8 @@ export function ServicesHero() {
                 </div>
                 <div className="h-64 overflow-hidden rounded-2xl shadow-lg">
                   <Image
-                    src="/images/cultural-experiences.webp"
-                    alt="Cultural experience"
+                    src="/images/hotel-booking.jpg"
+                    alt="Hotel booking"
                     width={300}
                     height={400}
                     className="h-full w-full object-cover"
@@ -128,21 +128,6 @@ export function ServicesHero() {
             </div>
           </motion.div>
         </div>
-
-        {/* Scroll indicator */}
-        {/* <motion.div
-          className="absolute bottom-8 left-1/2 flex -translate-x-1/2 transform cursor-pointer flex-col items-center"
-          onClick={scrollToNextSection}
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 1 }}
-          whileHover={{ scale: 1.1 }}
-        >
-          <span className="mb-2 text-sm text-white/80">
-            Explore our services
-          </span>
-          <ChevronDown className="animate-bounce text-white" size={24} />
-        </motion.div> */}
       </div>
     </section>
   );

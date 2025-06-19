@@ -7,8 +7,6 @@ export const tourPackagesData: TourPackage[] = [
     slug: "chimpanzee-trekking-kibale",
     location: "Kibale National Park",
     duration: "3 Days / 2 Nights",
-    price: 950,
-    rating: 4.8,
     image: "/images/gorilla-trekking.jpg",
     shortDescription:
       "Explore Kibale National Park, home to our closest relative – the endangered Chimpanzee, on this exciting 3-day safari adventure.",
@@ -110,8 +108,6 @@ export const tourPackagesData: TourPackage[] = [
     slug: "queen-elizabeth-safari",
     location: "Queen Elizabeth National Park",
     duration: "3 Days / 2 Nights",
-    price: 850,
-    rating: 4.7,
     image: "/images/queen-elizabeth-park.jpg",
     shortDescription:
       "Explore the diverse wildlife and stunning landscapes of Queen Elizabeth National Park on this 3-day safari adventure.",
@@ -214,8 +210,7 @@ export const tourPackagesData: TourPackage[] = [
     slug: "murchison-falls-safari",
     location: "Murchison Falls National Park",
     duration: "2 Days / 1 Night",
-    price: 650,
-    rating: 4.6,
+
     image: "/images/murchison-falls.webp",
     shortDescription:
       "Experience the power and beauty of Murchison Falls National Park on this compact 2-day safari adventure.",
@@ -302,8 +297,7 @@ export const tourPackagesData: TourPackage[] = [
     slug: "gorilla-trekking-bwindi",
     location: "Bwindi Impenetrable Forest",
     duration: "3 Days / 2 Nights",
-    price: 1200,
-    rating: 4.9,
+
     image: "/images/gorilla-trekking.jpg",
     shortDescription:
       "Experience the thrill of encountering mountain gorillas in their natural habitat on this unforgettable 3-day safari to Bwindi Impenetrable Forest.",
@@ -409,8 +403,7 @@ export const tourPackagesData: TourPackage[] = [
     slug: "uganda-15-days",
     location: "Multiple Locations",
     duration: "15 Days / 14 Nights",
-    price: 3500,
-    rating: 4.9,
+
     image: "/images/aau-safari.webp",
     shortDescription:
       "Experience the best of Uganda with this comprehensive 15-day tour covering wildlife, primates, and cultural experiences across the country.",
@@ -725,8 +718,7 @@ export const tourPackagesData: TourPackage[] = [
     slug: "bwindi-gorilla-8-days",
     location: "Multiple Locations",
     duration: "8 Days / 7 Nights",
-    price: 2200,
-    rating: 4.9,
+
     image: "/images/bwindi-8-days.jpg",
     shortDescription:
       "An extended gorilla tracking safari featuring double gorilla encounters, Semliki National Park exploration, and comprehensive wildlife experiences.",
@@ -917,8 +909,7 @@ export const tourPackagesData: TourPackage[] = [
     slug: "ugandan-golf-experience",
     location: "Entebbe & Kampala",
     duration: "4 Days / 3 Nights",
-    price: 800,
-    rating: 4.5,
+
     image: "/images/uganda-golf.jpg",
     shortDescription:
       "Experience Uganda's golf courses combined with vibrant nightlife and cultural entertainment in this unique 4-day golf tour.",
@@ -1043,8 +1034,7 @@ export const tourPackagesData: TourPackage[] = [
     slug: "uganda-martyrs-trail",
     location: "Multiple Religious Sites",
     duration: "7 Days / 6 Nights",
-    price: 900,
-    rating: 4.7,
+
     image: "/images/martyrs-trail.jpg",
     shortDescription:
       "Follow the footsteps of the Uganda Martyrs on this spiritual journey through significant religious and historical sites.",

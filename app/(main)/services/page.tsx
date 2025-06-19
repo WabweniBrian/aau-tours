@@ -1,12 +1,8 @@
-import Link from "next/link";
-import type { Metadata } from "next";
+import CTA from "@/components/about/cta";
+import ServiceBooking from "@/components/services/service-booking";
 import { ServicesHero } from "@/components/services/services-hero";
 import { ServicesList } from "@/components/services/services-list";
-import { ServiceProcess } from "@/components/services/service-process";
-import { ServiceComparison } from "@/components/services/service-comparison";
-import { ServiceTestimonials } from "@/components/services/service-testimonials";
-import { ServiceBooking } from "@/components/services/service-booking";
-import CTA from "@/components/about/cta";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Our Services | AAU Tours and Travel",
@@ -19,9 +15,7 @@ export default function ServicesPage() {
     <>
       <ServicesHero />
       <ServicesList />
-      {/* <ServiceProcess /> */}
-      {/* <ServiceComparison /> */}
-      <ServiceTestimonials />
+
       <ServiceBooking />
       <CTA />
     </>

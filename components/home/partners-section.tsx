@@ -8,32 +8,17 @@ const partners = [
   {
     id: "aau",
     name: "Automobile Association of Uganda",
-    logo: "/twi-logo.png",
+    logo: "/mini-logo.png",
   },
   {
-    id: "utb",
-    name: "Uganda Tourism Board",
-    logo: "/twi-logo.png",
-  },
-  {
-    id: "uwec",
-    name: "Uganda Wildlife Education Centre",
-    logo: "/twi-logo.png",
-  },
-  {
-    id: "uwa",
-    name: "Uganda Wildlife Authority",
-    logo: "/twi-logo.png",
-  },
-  {
-    id: "kcca",
-    name: "Kampala Capital City Authority",
-    logo: "/twi-logo.png",
+    id: "fim",
+    name: "Fédération Internationale de Motocyclisme",
+    logo: "/fim-logo.png",
   },
   {
     id: "fia",
     name: "FIA - Fédération Internationale de l'Automobile",
-    logo: "/twi-logo.png",
+    logo: "/fia-logo.png",
   },
 ];
 
@@ -49,7 +34,7 @@ export function PartnersSection() {
         />
 
         <div className="mt-12">
-          <div className="grid grid-cols-2 items-center gap-4 md:grid-cols-3 lg:grid-cols-6">
+          <div className="grid grid-cols-1 place-items-center items-center gap-4 sm:grid-cols-2 md:grid-cols-3">
             {partners.map((partner, index) => (
               <motion.div
                 key={partner.id}
@@ -67,6 +52,9 @@ export function PartnersSection() {
                   height={60}
                   className="h-12 w-auto object-contain"
                 />
+                <span className="ml-4 text-sm font-medium text-gray-700">
+                  {partner.name}
+                </span>
               </motion.div>
             ))}
           </div>

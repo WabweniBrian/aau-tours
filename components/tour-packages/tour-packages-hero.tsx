@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { Search } from "lucide-react";
 
 export function TourPackagesHero() {
   return (
@@ -48,25 +47,6 @@ export function TourPackagesHero() {
             Explore our carefully crafted tour packages designed to showcase the
             best of Uganda&apos;s wildlife, landscapes, and cultural heritage.
           </motion.p>
-
-          {/* <motion.div
-            className="relative max-w-xl"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-          >
-            <input
-              type="text"
-              placeholder="Search for tours, destinations, or activities..."
-              className="w-full rounded-full border-2 border-white/30 bg-white/10 px-6 py-4 pr-12 text-white backdrop-blur-md placeholder:text-white/60 focus:border-primary focus:outline-none"
-            />
-            <button
-              className="absolute right-2 top-1/2 flex h-10 w-10 -translate-y-1/2 transform items-center justify-center rounded-full bg-primary text-white"
-              aria-label="Search"
-            >
-              <Search size={18} />
-            </button>
-          </motion.div> */}
         </div>
       </div>
 

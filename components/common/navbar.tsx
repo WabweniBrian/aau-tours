@@ -19,6 +19,7 @@ import {
 } from "lucide-react";
 import { destinationsData } from "@/data/destinations";
 import { tourPackagesData } from "@/data/tour-packages";
+import { usePathname } from "next/navigation";
 
 const navLinks = [
   {
@@ -29,14 +30,6 @@ const navLinks = [
     title: "About Us",
     href: "/about",
   },
-  // {
-  //   title: "Destinations",
-  //   href: "/destinations",
-  //   children: destinationsData.map((dest) => ({
-  //     title: dest.title,
-  //     href: `/destinations/${dest.slug}`,
-  //   })),
-  // },
   {
     title: "Tour Packages",
     href: "/tour-packages",
@@ -50,10 +43,6 @@ const navLinks = [
     href: "/services",
   },
   {
-    title: "Blog",
-    href: "/blog",
-  },
-  {
     title: "Contact",
     href: "/contact",
   },
@@ -63,6 +52,7 @@ export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -92,11 +82,11 @@ export function Navbar() {
           <div className="flex items-center space-x-4">
             <div className="flex items-center space-x-1">
               <Phone size={14} />
-              <span className="text-sm">+256752413322</span>
+              <span className="text-sm">+256756555777</span>
             </div>
             <div className="flex items-center space-x-1">
               <Mail size={14} />
-              <span className="text-sm">info@aautours.com</span>
+              <span className="text-sm">aautours.travel@aau.co.ug</span>
             </div>
             <div className="flex items-center space-x-1">
               <MapPin size={14} />
@@ -158,49 +148,69 @@ export function Navbar() {
 
             {/* Desktop Navigation */}
             <nav className="hidden items-center space-x-1 lg:flex">
-              {navLinks.map((link) => (
-                <div key={link.title} className="group relative">
-                  {link.children ? (
-                    <button
-                      className="flex items-center rounded-full px-4 py-2 text-foreground/80 transition-colors hover:text-primary"
-                      onClick={() => toggleDropdown(link.title)}
-                      aria-expanded={activeDropdown === link.title}
-                    >
-                      {link.title}
-                      <ChevronDown
-                        size={16}
+              {navLinks.map((link) => {
+                const isActive =
+                  pathname === link.href ||
+                  pathname.startsWith(link.href + "/");
+                return (
+                  <div key={link.title} className="group relative">
+                    {link.children ? (
+                      <button
                         className={cn(
-                          "ml-1 transition-transform duration-200",
-                          activeDropdown === link.title ? "rotate-180" : "",
+                          "flex items-center rounded-full px-4 py-2 transition-colors",
+                          isActive
+                            ? "text-primary"
+                            : "text-foreground/80 hover:text-primary",
                         )}
-                      />
-                    </button>
-                  ) : (
-                    <Link
-                      href={link.href}
-                      className="rounded-full px-4 py-2 text-foreground/80 transition-colors hover:text-primary"
-                    >
-                      {link.title}
-                    </Link>
-                  )}
+                        onClick={() => toggleDropdown(link.title)}
+                        aria-expanded={activeDropdown === link.title}
+                      >
+                        {link.title}
+                        <ChevronDown
+                          size={16}
+                          className={cn(
+                            "ml-1 transition-transform duration-200",
+                            activeDropdown === link.title ? "rotate-180" : "",
+                          )}
+                        />
+                      </button>
+                    ) : (
+                      <Link
+                        href={link.href}
+                        className={cn(
+                          "rounded-full px-4 py-2 transition-colors",
+                          isActive
+                            ? "text-primary"
+                            : "text-foreground/80 hover:text-primary",
+                        )}
+                      >
+                        {link.title}
+                      </Link>
+                    )}
 
-                  {link.children && (
-                    <div className="invisible absolute left-0 mt-2 w-56 translate-y-2 transform opacity-0 transition-all duration-300 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
-                      <div className="rounded-2xl border border-border/50 bg-white py-2 shadow-xl">
-                        {link.children.map((child) => (
-                          <Link
-                            key={child.title}
-                            href={child.href}
-                            className="block px-4 py-2 text-sm text-foreground/80 transition-colors hover:bg-muted hover:text-primary"
-                          >
-                            {child.title}
-                          </Link>
-                        ))}
+                    {link.children && (
+                      <div className="invisible absolute left-0 mt-2 w-56 translate-y-2 transform opacity-0 transition-all duration-300 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
+                        <div className="rounded-2xl border border-border/50 bg-white py-2 shadow-xl">
+                          {link.children.map((child) => (
+                            <Link
+                              key={child.title}
+                              href={child.href}
+                              className={cn(
+                                "block px-4 py-2 text-sm transition-colors",
+                                pathname === child.href
+                                  ? "bg-muted font-medium text-primary"
+                                  : "text-foreground/80 hover:bg-muted hover:text-primary",
+                              )}
+                            >
+                              {child.title}
+                            </Link>
+                          ))}
+                        </div>
                       </div>
-                    </div>
-                  )}
-                </div>
-              ))}
+                    )}
+                  </div>
+                );
+              })}
             </nav>
 
             <div className="hidden lg:block">
@@ -246,60 +256,81 @@ export function Navbar() {
             >
               <div className="container-custom py-4">
                 <nav className="flex flex-col space-y-4">
-                  {navLinks.map((link) => (
-                    <div key={link.title}>
-                      {link.children ? (
-                        <>
-                          <button
-                            className="flex w-full items-center justify-between border-b border-border/50 py-2 text-foreground/80 hover:text-primary"
-                            onClick={() => toggleDropdown(link.title)}
-                            aria-expanded={activeDropdown === link.title}
+                  {navLinks.map((link) => {
+                    const isActive =
+                      pathname === link.href ||
+                      pathname.startsWith(link.href + "/");
+                    return (
+                      <div key={link.title}>
+                        {link.children ? (
+                          <>
+                            <button
+                              className={cn(
+                                "flex w-full items-center justify-between border-b border-border/50 py-2 transition-colors",
+                                isActive
+                                  ? "font-medium text-primary"
+                                  : "text-foreground/80 hover:text-primary",
+                              )}
+                              onClick={() => toggleDropdown(link.title)}
+                              aria-expanded={activeDropdown === link.title}
+                            >
+                              {link.title}
+                              <ChevronDown
+                                size={16}
+                                className={cn(
+                                  "transition-transform duration-200",
+                                  activeDropdown === link.title
+                                    ? "rotate-180"
+                                    : "",
+                                )}
+                              />
+                            </button>
+                            <AnimatePresence>
+                              {activeDropdown === link.title && (
+                                <motion.div
+                                  initial={{ opacity: 0, height: 0 }}
+                                  animate={{ opacity: 1, height: "auto" }}
+                                  exit={{ opacity: 0, height: 0 }}
+                                  transition={{ duration: 0.2 }}
+                                  className="mt-2 space-y-2 pl-4"
+                                >
+                                  {link.children.map((child) => (
+                                    <Link
+                                      key={child.title}
+                                      href={child.href}
+                                      className={cn(
+                                        "block py-2 text-sm transition-colors",
+                                        pathname === child.href
+                                          ? "font-medium text-primary"
+                                          : "text-foreground/70 hover:text-primary",
+                                      )}
+                                      onClick={() => setIsOpen(false)}
+                                    >
+                                      {child.title}
+                                    </Link>
+                                  ))}
+                                </motion.div>
+                              )}
+                            </AnimatePresence>
+                          </>
+                        ) : (
+                          <Link
+                            href={link.href}
+                            className={cn(
+                              "block border-b border-border/50 py-2 transition-colors",
+                              isActive
+                                ? "font-medium text-primary"
+                                : "text-foreground/80 hover:text-primary",
+                            )}
+                            onClick={() => setIsOpen(false)}
                           >
                             {link.title}
-                            <ChevronDown
-                              size={16}
-                              className={cn(
-                                "transition-transform duration-200",
-                                activeDropdown === link.title
-                                  ? "rotate-180"
-                                  : "",
-                              )}
-                            />
-                          </button>
-                          <AnimatePresence>
-                            {activeDropdown === link.title && (
-                              <motion.div
-                                initial={{ opacity: 0, height: 0 }}
-                                animate={{ opacity: 1, height: "auto" }}
-                                exit={{ opacity: 0, height: 0 }}
-                                transition={{ duration: 0.2 }}
-                                className="mt-2 space-y-2 pl-4"
-                              >
-                                {link.children.map((child) => (
-                                  <Link
-                                    key={child.title}
-                                    href={child.href}
-                                    className="block py-2 text-sm text-foreground/70 hover:text-primary"
-                                    onClick={() => setIsOpen(false)}
-                                  >
-                                    {child.title}
-                                  </Link>
-                                ))}
-                              </motion.div>
-                            )}
-                          </AnimatePresence>
-                        </>
-                      ) : (
-                        <Link
-                          href={link.href}
-                          className="block border-b border-border/50 py-2 text-foreground/80 hover:text-primary"
-                          onClick={() => setIsOpen(false)}
-                        >
-                          {link.title}
-                        </Link>
-                      )}
-                    </div>
-                  ))}
+                          </Link>
+                        )}
+                      </div>
+                    );
+                  })}
+
                   {/* <Link
                     href="/contact"
                     className="btn-primary mt-4 w-full text-center"

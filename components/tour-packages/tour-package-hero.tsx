@@ -56,21 +56,14 @@ export function TourPackageHero({ tourPackage }: TourPackageHeroProps) {
                 <Calendar size={20} className="text-primary-300 mr-2" />
                 <span>{tourPackage.tourType}</span>
               </div>
-              <div className="flex items-center">
-                <Star size={20} className="mr-2 text-yellow-400" />
-                <span>
-                  {tourPackage.rating} ({Math.floor(Math.random() * 50) + 10}{" "}
-                  reviews)
-                </span>
-              </div>
             </div>
 
             <div className="flex flex-wrap gap-4">
               <Link
-                href="/contact"
+                href={`/contact?message=${tourPackage.title} - Booking`}
                 className="inline-flex items-center justify-center rounded-full bg-primary px-6 py-3 text-white transition-colors hover:bg-primary/90"
               >
-                Book Now - ${tourPackage.price} per person
+                Book Now Now
               </Link>
               <Link
                 href="/contact"

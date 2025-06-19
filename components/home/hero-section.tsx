@@ -29,22 +29,22 @@ const slides = [
   },
   {
     id: 2,
-    title: "Motorsport Tours",
+    title: "Hotel Bookings",
     subtitle:
-      "Experience the thrill of international motorsport events with our specialized rally tour packages",
-    image: "/images/motorsport.jpg",
+      "Let us book you into comfortable budget hotels and trust us to deliver you to your hotel at no extra cost.",
+    image: "/images/hotel-booking.jpg",
     icon: Trophy,
     cta: {
       primary: {
         text: "Explore Motorsport Tours",
-        link: "/services#motorsport-tours",
+        link: "/services#hotel-booking",
       },
       secondary: {
-        text: "Contact Us",
-        link: "/contact",
+        text: "Book Service",
+        link: "/services#service-booking",
       },
     },
-    location: "Kenya & Uganda",
+    location: "Uganda",
   },
 
   {
@@ -61,26 +61,26 @@ const slides = [
       },
       secondary: {
         text: "Get Quote",
-        link: "/contact",
+        link: "/services#service-booking",
       },
     },
     location: "Entebbe & Kampala",
   },
   {
     id: 4,
-    title: "Car Leasing",
+    title: "Inland Transportation",
     subtitle:
-      "Premium vehicle leasing for organizations and individuals with full fleet management",
+      "For any inland movements within Kampala for business meetings or engagements.",
     image: "/images/car-rentals.jpg",
     icon: Car,
     cta: {
       primary: {
         text: "View Fleet",
-        link: "/services#car-leasing",
+        link: "/services#inland-transport",
       },
       secondary: {
         text: "Request Quote",
-        link: "/contact",
+        link: "/services#service-booking",
       },
     },
     location: "Nationwide Coverage",

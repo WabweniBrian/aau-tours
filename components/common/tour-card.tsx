@@ -12,8 +12,6 @@ interface TourCardProps {
   location: string;
   duration: string;
   image: string;
-  price: number;
-  rating: number;
   featured?: boolean;
   slug: string;
 }
@@ -24,8 +22,6 @@ export function TourCard({
   location,
   duration,
   image,
-  price,
-  rating,
   featured = false,
   slug,
 }: TourCardProps) {
@@ -65,10 +61,6 @@ export function TourCard({
             <MapPin size={16} className="mr-1" />
             <span className="text-sm">{location}</span>
           </div>
-          <div className="absolute bottom-4 right-4 flex items-center rounded-full bg-white/90 px-2 py-1">
-            <Star size={14} className="mr-1 text-yellow-500" />
-            <span className="text-xs font-medium">{rating.toFixed(1)}</span>
-          </div>
         </div>
         <div className="p-6">
           <div className="mb-2 flex items-center">
@@ -79,10 +71,6 @@ export function TourCard({
             {title}
           </h3>
           <div className="flex items-center justify-between">
-            <div>
-              <span className="text-sm text-foreground/70">From</span>
-              <p className="text-xl font-bold text-primary">${price}</p>
-            </div>
             <div className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary transition-colors hover:bg-primary hover:text-white">
               <ArrowRight size={18} />
             </div>

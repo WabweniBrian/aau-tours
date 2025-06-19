@@ -4,8 +4,6 @@ export interface TourPackage {
   slug: string;
   location: string;
   duration: string;
-  price: number;
-  rating: number;
   image: string;
   shortDescription: string;
   description: string;

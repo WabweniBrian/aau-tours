@@ -1,113 +1,201 @@
 "use client";
 
-import type React from "react";
-
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Send, Calendar, Clock } from "lucide-react";
+import { Send, CalendarIcon, ChevronLeft, ChevronRight } from "lucide-react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
+import { format } from "date-fns";
 
-export function ServiceBooking() {
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Progress } from "@/components/ui/progress";
+import { Calendar } from "@/components/ui/calendar";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import { cn } from "@/lib/utils";
+import { sendBookingEmail } from "@/lib/actions/send-booking-email";
+import toast from "react-hot-toast";
+
+// Zod schemas for each step
+const personalInfoSchema = z.object({
+  name: z.string().min(2, "Name must be at least 2 characters"),
+  email: z.string().email("Please enter a valid email address"),
+  phone: z.string().min(10, "Phone number must be at least 10 digits"),
+});
+
+const tripDetailsSchema = z.object({
+  serviceType: z.string().min(1, "Please select a service type"),
+  travelDates: z.object({
+    from: z.date({ required_error: "Please select a start date" }),
+    to: z.date({ required_error: "Please select an end date" }),
+  }),
+  specialRequests: z.string().optional(),
+});
+
+// Combined schema for final submission
+const fullFormSchema = personalInfoSchema.merge(tripDetailsSchema);
+
+type FormData = z.infer<typeof fullFormSchema>;
+
+const serviceTypeOptions = [
+  { value: "safari-tours", label: "Game Park Tours & Gorilla Trekking" },
+  { value: "airport-transfers", label: "Airport Pickups & Drops" },
+  { value: "inland-transport", label: "Inland Transportation" },
+  { value: "hotel-booking", label: "Hotel Bookings" },
+  { value: "furnished-apartments", label: "Fully Furnished Apartments" },
+  { value: "expatriate-settlement", label: "Expatriate Settlement Support" },
+];
+
+export default function ServiceBooking() {
   const [step, setStep] = useState(1);
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    serviceType: "",
-    groupSize: "",
-    travelDates: "",
-    duration: "",
-    specialRequests: "",
-  });
-  const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
-  const handleChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >,
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-    // Clear error when user types
-    if (errors[name]) {
-      setErrors((prev) => {
-        const newErrors = { ...prev };
-        delete newErrors[name];
-        return newErrors;
-      });
+  const form = useForm<FormData>({
+    resolver: zodResolver(fullFormSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      phone: "",
+      serviceType: "",
+      travelDates: {
+        from: undefined,
+        to: undefined,
+      },
+      specialRequests: "",
+    },
+    mode: "onChange",
+  });
+
+  const { watch, trigger, getValues } = form;
+  const formValues = watch();
+
+  const validateCurrentStep = async () => {
+    if (step === 1) {
+      return await trigger(["name", "email", "phone"]);
+    } else if (step === 2) {
+      return await trigger(["serviceType", "travelDates"]);
     }
+    return true;
   };
 
-  const validateStep = (currentStep: number) => {
-    const newErrors: Record<string, string> = {};
-
-    if (currentStep === 1) {
-      if (!formData.name.trim()) {
-        newErrors.name = "Name is required";
-      }
-      if (!formData.email.trim()) {
-        newErrors.email = "Email is required";
-      } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-        newErrors.email = "Email is invalid";
-      }
-      if (!formData.phone.trim()) {
-        newErrors.phone = "Phone number is required";
-      }
-    } else if (currentStep === 2) {
-      if (!formData.serviceType) {
-        newErrors.serviceType = "Please select a service type";
-      }
-      if (!formData.groupSize) {
-        newErrors.groupSize = "Please select your group size";
-      }
-      if (!formData.travelDates.trim()) {
-        newErrors.travelDates = "Please provide your travel dates";
-      }
-      if (!formData.duration) {
-        newErrors.duration = "Please select your preferred duration";
-      }
-    }
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
-
-  const nextStep = () => {
-    if (validateStep(step)) {
-      setStep(step + 1);
+  const nextStep = async () => {
+    const isValid = await validateCurrentStep();
+    if (isValid) {
+      setStep((prev) => prev + 1);
     }
   };
 
   const prevStep = () => {
-    setStep(step - 1);
+    setStep((prev) => prev - 1);
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    if (!validateStep(step)) return;
-
+  const onSubmit = async (data: FormData) => {
     setIsSubmitting(true);
 
-    // Simulate API call
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1500));
-      setIsSuccess(true);
+      const result = await sendBookingEmail(data);
+      if (result.success) {
+        setIsSuccess(true);
+      } else {
+        console.error("Failed to send email:", result.error);
+        toast.error("Something went wrong, please try again!");
+      }
     } catch (error) {
-      setErrors({ form: "Something went wrong. Please try again." });
+      console.error("Submission error:", error);
+      toast.error("Something went wrong, please try again!");
     } finally {
       setIsSubmitting(false);
     }
   };
 
+  const resetForm = () => {
+    setIsSuccess(false);
+    setStep(1);
+    form.reset();
+  };
+
+  const getStepProgress = () => (step / 3) * 100;
+
+  if (isSuccess) {
+    return (
+      <section className="bg-brand/10 py-24" id="service-booking">
+        <div className="custom-container mx-auto px-4">
+          <div className="mx-auto max-w-4xl">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5 }}
+            >
+              <Card className="border-0 bg-green-50">
+                <CardContent className="p-12 text-center">
+                  <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-green-100">
+                    <svg
+                      className="h-10 w-10 text-green-600"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M5 13l4 4L19 7"
+                      />
+                    </svg>
+                  </div>
+                  <h3 className="mb-4 text-2xl font-bold text-gray-900">
+                    Booking Request Received!
+                  </h3>
+                  <p className="mb-6 text-gray-600">
+                    Thank you for your interest in our services. Our team will
+                    review your request and contact you within 24 hours to
+                    discuss your Ugandan adventure in detail.
+                  </p>
+                  <Button
+                    onClick={resetForm}
+                    className="bg-green-600 hover:bg-green-700"
+                  >
+                    Submit Another Request
+                  </Button>
+                </CardContent>
+              </Card>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   return (
-    <section className="bg-white py-24" id="service-booking">
-      <div className="container-custom">
+    <section className="bg-brand/10 py-24" id="service-booking">
+      <div className="custom-container mx-auto px-4">
         <div className="mx-auto max-w-4xl">
           <div className="mb-12 text-center">
             <motion.h2
-              className="heading-md mb-6"
+              className="mb-6 text-4xl font-bold text-gray-900"
               initial={{ opacity: 0, y: -20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
@@ -116,7 +204,7 @@ export function ServiceBooking() {
               Book Your Service
             </motion.h2>
             <motion.p
-              className="mx-auto max-w-2xl text-lg text-foreground/70"
+              className="mx-auto max-w-2xl text-lg text-gray-600"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
@@ -128,471 +216,394 @@ export function ServiceBooking() {
             </motion.p>
           </div>
 
-          {isSuccess ? (
-            <motion.div
-              className="rounded-3xl bg-brand-green-50 p-12 text-center"
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5 }}
-            >
-              <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-primary/20">
-                <svg
-                  className="h-10 w-10 text-primary"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M5 13l4 4L19 7"
-                  />
-                </svg>
+          <Card className="overflow-hidden border-0 shadow-lg">
+            <CardHeader className="bg-gray-50">
+              <div className="flex items-center justify-between">
+                <CardTitle className="text-sm font-medium text-gray-500">
+                  Step {step} of 3
+                </CardTitle>
+                <span className="text-sm font-medium text-gray-500">
+                  {Math.round(getStepProgress())}% Complete
+                </span>
               </div>
-              <h3 className="mb-4 text-2xl font-bold">
-                Booking Request Received!
-              </h3>
-              <p className="mb-6 text-foreground/70">
-                Thank you for your interest in our services. Our team will
-                review your request and contact you within 24 hours to discuss
-                your Ugandan adventure in detail.
-              </p>
-              <button
-                onClick={() => {
-                  setIsSuccess(false);
-                  setStep(1);
-                  setFormData({
-                    name: "",
-                    email: "",
-                    phone: "",
-                    serviceType: "",
-                    groupSize: "",
-                    travelDates: "",
-                    duration: "",
-                    specialRequests: "",
-                  });
-                }}
-                className="btn-primary"
-              >
-                Submit Another Request
-              </button>
-            </motion.div>
-          ) : (
-            <div className="overflow-hidden rounded-3xl border border-gray-100 bg-white shadow-lg">
-              {/* Progress Steps */}
-              <div className="bg-gray-50 p-6">
-                <div className="mx-auto flex max-w-md items-center justify-between">
-                  <div className="flex flex-col items-center">
-                    <div
-                      className={`flex h-10 w-10 items-center justify-center rounded-full ${
-                        step >= 1
-                          ? "bg-primary text-white"
-                          : "bg-gray-200 text-gray-500"
-                      }`}
-                    >
-                      1
-                    </div>
-                    <span className="mt-2 text-sm">Personal Info</span>
-                  </div>
+              <Progress value={getStepProgress()} className="mt-2" />
+
+              <div className="mt-4 flex items-center justify-between">
+                <div className="flex flex-col items-center">
                   <div
-                    className={`h-1 flex-1 ${step >= 2 ? "bg-primary" : "bg-gray-200"}`}
-                  ></div>
-                  <div className="flex flex-col items-center">
-                    <div
-                      className={`flex h-10 w-10 items-center justify-center rounded-full ${
-                        step >= 2
-                          ? "bg-primary text-white"
-                          : "bg-gray-200 text-gray-500"
-                      }`}
-                    >
-                      2
-                    </div>
-                    <span className="mt-2 text-sm">Trip Details</span>
+                    className={`flex h-10 w-10 items-center justify-center rounded-full ${
+                      step >= 1
+                        ? "bg-blue-600 text-white"
+                        : "bg-gray-200 text-gray-500"
+                    }`}
+                  >
+                    1
                   </div>
+                  <span className="mt-2 text-sm text-gray-500">
+                    Personal Info
+                  </span>
+                </div>
+                <div className="flex flex-col items-center">
                   <div
-                    className={`h-1 flex-1 ${step >= 3 ? "bg-primary" : "bg-gray-200"}`}
-                  ></div>
-                  <div className="flex flex-col items-center">
-                    <div
-                      className={`flex h-10 w-10 items-center justify-center rounded-full ${
-                        step >= 3
-                          ? "bg-primary text-white"
-                          : "bg-gray-200 text-gray-500"
-                      }`}
-                    >
-                      3
-                    </div>
-                    <span className="mt-2 text-sm">Confirmation</span>
+                    className={`flex h-10 w-10 items-center justify-center rounded-full ${
+                      step >= 2
+                        ? "bg-blue-600 text-white"
+                        : "bg-gray-200 text-gray-500"
+                    }`}
+                  >
+                    2
                   </div>
+                  <span className="mt-2 text-sm text-gray-500">
+                    Trip Details
+                  </span>
+                </div>
+                <div className="flex flex-col items-center">
+                  <div
+                    className={`flex h-10 w-10 items-center justify-center rounded-full ${
+                      step >= 3
+                        ? "bg-blue-600 text-white"
+                        : "bg-gray-200 text-gray-500"
+                    }`}
+                  >
+                    3
+                  </div>
+                  <span className="mt-2 text-sm text-gray-500">Review</span>
                 </div>
               </div>
+            </CardHeader>
 
-              <form onSubmit={handleSubmit} className="p-8">
-                {step === 1 && (
-                  <motion.div
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: 20 }}
-                    transition={{ duration: 0.5 }}
-                  >
-                    <h3 className="mb-6 text-xl font-bold">
-                      Personal Information
-                    </h3>
-                    <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-                      <div>
-                        <label
-                          htmlFor="name"
-                          className="mb-1 block text-sm font-medium"
-                        >
-                          Full Name <span className="text-red-500">*</span>
-                        </label>
-                        <input
-                          type="text"
-                          id="name"
+            <CardContent className="p-8">
+              <Form {...form}>
+                <div className="space-y-6">
+                  {step === 1 && (
+                    <motion.div
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.5 }}
+                      className="space-y-6"
+                    >
+                      <h3 className="text-xl font-bold text-gray-900">
+                        Personal Information
+                      </h3>
+
+                      <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+                        <FormField
+                          control={form.control}
                           name="name"
-                          value={formData.name}
-                          onChange={handleChange}
-                          className={`w-full rounded-lg border px-4 py-2 ${
-                            errors.name ? "border-red-500" : "border-gray-300"
-                          } focus:outline-none focus:ring-2 focus:ring-primary/50`}
-                          placeholder="John Doe"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>Full Name *</FormLabel>
+                              <FormControl>
+                                <Input placeholder="John Doe" {...field} />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
                         />
-                        {errors.name && (
-                          <p className="mt-1 text-sm text-red-500">
-                            {errors.name}
-                          </p>
-                        )}
-                      </div>
-                      <div>
-                        <label
-                          htmlFor="email"
-                          className="mb-1 block text-sm font-medium"
-                        >
-                          Email Address <span className="text-red-500">*</span>
-                        </label>
-                        <input
-                          type="email"
-                          id="email"
+
+                        <FormField
+                          control={form.control}
                           name="email"
-                          value={formData.email}
-                          onChange={handleChange}
-                          className={`w-full rounded-lg border px-4 py-2 ${
-                            errors.email ? "border-red-500" : "border-gray-300"
-                          } focus:outline-none focus:ring-2 focus:ring-primary/50`}
-                          placeholder="john@example.com"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>Email Address *</FormLabel>
+                              <FormControl>
+                                <Input
+                                  type="email"
+                                  placeholder="johndoe@gmail.com"
+                                  {...field}
+                                />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
                         />
-                        {errors.email && (
-                          <p className="mt-1 text-sm text-red-500">
-                            {errors.email}
-                          </p>
-                        )}
-                      </div>
-                      <div className="md:col-span-2">
-                        <label
-                          htmlFor="phone"
-                          className="mb-1 block text-sm font-medium"
-                        >
-                          Phone Number <span className="text-red-500">*</span>
-                        </label>
-                        <input
-                          type="tel"
-                          id="phone"
-                          name="phone"
-                          value={formData.phone}
-                          onChange={handleChange}
-                          className={`w-full rounded-lg border px-4 py-2 ${
-                            errors.phone ? "border-red-500" : "border-gray-300"
-                          } focus:outline-none focus:ring-2 focus:ring-primary/50`}
-                          placeholder="+1 (123) 456-7890"
-                        />
-                        {errors.phone && (
-                          <p className="mt-1 text-sm text-red-500">
-                            {errors.phone}
-                          </p>
-                        )}
-                      </div>
-                    </div>
-                  </motion.div>
-                )}
-
-                {step === 2 && (
-                  <motion.div
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: 20 }}
-                    transition={{ duration: 0.5 }}
-                  >
-                    <h3 className="mb-6 text-xl font-bold">Trip Details</h3>
-                    <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-                      <div>
-                        <label
-                          htmlFor="serviceType"
-                          className="mb-1 block text-sm font-medium"
-                        >
-                          Service Type <span className="text-red-500">*</span>
-                        </label>
-                        <select
-                          id="serviceType"
-                          name="serviceType"
-                          value={formData.serviceType}
-                          onChange={handleChange}
-                          className={`w-full rounded-lg border px-4 py-2 ${
-                            errors.serviceType
-                              ? "border-red-500"
-                              : "border-gray-300"
-                          } focus:outline-none focus:ring-2 focus:ring-primary/50`}
-                        >
-                          <option value="">Select a service</option>
-                          <option value="safari">Safari Tours</option>
-                          <option value="gorilla">Gorilla Trekking</option>
-                          <option value="airport">Airport Transfers</option>
-                          <option value="photography">Photography Tours</option>
-                          <option value="cultural">Cultural Experiences</option>
-                          <option value="car">Car Rentals</option>
-                          <option value="custom">Custom Itinerary</option>
-                        </select>
-                        {errors.serviceType && (
-                          <p className="mt-1 text-sm text-red-500">
-                            {errors.serviceType}
-                          </p>
-                        )}
-                      </div>
-                      <div>
-                        <label
-                          htmlFor="groupSize"
-                          className="mb-1 block text-sm font-medium"
-                        >
-                          Group Size <span className="text-red-500">*</span>
-                        </label>
-                        <select
-                          id="groupSize"
-                          name="groupSize"
-                          value={formData.groupSize}
-                          onChange={handleChange}
-                          className={`w-full rounded-lg border px-4 py-2 ${
-                            errors.groupSize
-                              ? "border-red-500"
-                              : "border-gray-300"
-                          } focus:outline-none focus:ring-2 focus:ring-primary/50`}
-                        >
-                          <option value="">Select group size</option>
-                          <option value="1">1 person</option>
-                          <option value="2">2 people</option>
-                          <option value="3-5">3-5 people</option>
-                          <option value="6-10">6-10 people</option>
-                          <option value="11+">11+ people</option>
-                        </select>
-                        {errors.groupSize && (
-                          <p className="mt-1 text-sm text-red-500">
-                            {errors.groupSize}
-                          </p>
-                        )}
-                      </div>
-                      <div>
-                        <label
-                          htmlFor="travelDates"
-                          className="mb-1 block text-sm font-medium"
-                        >
-                          Travel Dates <span className="text-red-500">*</span>
-                        </label>
-                        <div className="relative">
-                          <input
-                            type="text"
-                            id="travelDates"
-                            name="travelDates"
-                            value={formData.travelDates}
-                            onChange={handleChange}
-                            className={`w-full rounded-lg border px-4 py-2 pl-10 ${
-                              errors.travelDates
-                                ? "border-red-500"
-                                : "border-gray-300"
-                            } focus:outline-none focus:ring-2 focus:ring-primary/50`}
-                            placeholder="MM/DD/YYYY - MM/DD/YYYY"
-                          />
-                          <Calendar
-                            className="absolute left-3 top-1/2 -translate-y-1/2 transform text-gray-400"
-                            size={16}
-                          />
-                        </div>
-                        {errors.travelDates && (
-                          <p className="mt-1 text-sm text-red-500">
-                            {errors.travelDates}
-                          </p>
-                        )}
-                      </div>
-                      <div>
-                        <label
-                          htmlFor="duration"
-                          className="mb-1 block text-sm font-medium"
-                        >
-                          Preferred Duration{" "}
-                          <span className="text-red-500">*</span>
-                        </label>
-                        <div className="relative">
-                          <select
-                            id="duration"
-                            name="duration"
-                            value={formData.duration}
-                            onChange={handleChange}
-                            className={`w-full rounded-lg border px-4 py-2 pl-10 ${
-                              errors.duration
-                                ? "border-red-500"
-                                : "border-gray-300"
-                            } focus:outline-none focus:ring-2 focus:ring-primary/50`}
-                          >
-                            <option value="">Select duration</option>
-                            <option value="1-3">1-3 days</option>
-                            <option value="4-7">4-7 days</option>
-                            <option value="8-14">8-14 days</option>
-                            <option value="15+">15+ days</option>
-                          </select>
-                          <Clock
-                            className="absolute left-3 top-1/2 -translate-y-1/2 transform text-gray-400"
-                            size={16}
-                          />
-                        </div>
-                        {errors.duration && (
-                          <p className="mt-1 text-sm text-red-500">
-                            {errors.duration}
-                          </p>
-                        )}
-                      </div>
-                      <div className="md:col-span-2">
-                        <label
-                          htmlFor="specialRequests"
-                          className="mb-1 block text-sm font-medium"
-                        >
-                          Special Requests or Requirements
-                        </label>
-                        <textarea
-                          id="specialRequests"
-                          name="specialRequests"
-                          value={formData.specialRequests}
-                          onChange={handleChange}
-                          rows={4}
-                          className="w-full rounded-lg border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary/50"
-                          placeholder="Tell us about any special requirements or preferences..."
-                        ></textarea>
-                      </div>
-                    </div>
-                  </motion.div>
-                )}
-
-                {step === 3 && (
-                  <motion.div
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: 20 }}
-                    transition={{ duration: 0.5 }}
-                  >
-                    <h3 className="mb-6 text-xl font-bold">
-                      Review Your Information
-                    </h3>
-                    <div className="mb-6 rounded-xl bg-gray-50 p-6">
-                      <h4 className="mb-4 font-bold">Personal Information</h4>
-                      <div className="mb-6 grid grid-cols-1 gap-4 md:grid-cols-2">
-                        <div>
-                          <p className="text-sm text-gray-500">Full Name</p>
-                          <p className="font-medium">{formData.name}</p>
-                        </div>
-                        <div>
-                          <p className="text-sm text-gray-500">Email Address</p>
-                          <p className="font-medium">{formData.email}</p>
-                        </div>
-                        <div>
-                          <p className="text-sm text-gray-500">Phone Number</p>
-                          <p className="font-medium">{formData.phone}</p>
-                        </div>
                       </div>
 
-                      <h4 className="mb-4 font-bold">Trip Details</h4>
-                      <div className="mb-6 grid grid-cols-1 gap-4 md:grid-cols-2">
-                        <div>
-                          <p className="text-sm text-gray-500">Service Type</p>
-                          <p className="font-medium">{formData.serviceType}</p>
-                        </div>
-                        <div>
-                          <p className="text-sm text-gray-500">Group Size</p>
-                          <p className="font-medium">{formData.groupSize}</p>
-                        </div>
-                        <div>
-                          <p className="text-sm text-gray-500">Travel Dates</p>
-                          <p className="font-medium">{formData.travelDates}</p>
-                        </div>
-                        <div>
-                          <p className="text-sm text-gray-500">
-                            Preferred Duration
-                          </p>
-                          <p className="font-medium">{formData.duration}</p>
-                        </div>
-                      </div>
+                      <FormField
+                        control={form.control}
+                        name="phone"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Phone Number *</FormLabel>
+                            <FormControl>
+                              <Input
+                                type="tel"
+                                placeholder="+256774892342"
+                                {...field}
+                              />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                    </motion.div>
+                  )}
 
-                      {formData.specialRequests && (
-                        <div>
-                          <p className="text-sm text-gray-500">
-                            Special Requests
-                          </p>
-                          <p className="font-medium">
-                            {formData.specialRequests}
-                          </p>
-                        </div>
-                      )}
-                    </div>
+                  {step === 2 && (
+                    <motion.div
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.5 }}
+                      className="space-y-6"
+                    >
+                      <h3 className="text-xl font-bold text-gray-900">
+                        Trip Details
+                      </h3>
 
-                    <p className="mb-6 text-sm text-gray-500">
-                      By submitting this form, you agree to be contacted by our
-                      team regarding your travel inquiry. We respect your
-                      privacy and will never share your information with third
-                      parties.
-                    </p>
+                      <FormField
+                        control={form.control}
+                        name="serviceType"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Service Type *</FormLabel>
+                            <Select
+                              onValueChange={field.onChange}
+                              defaultValue={field.value}
+                            >
+                              <FormControl>
+                                <SelectTrigger>
+                                  <SelectValue placeholder="Select a service" />
+                                </SelectTrigger>
+                              </FormControl>
+                              <SelectContent>
+                                {serviceTypeOptions.map((option) => (
+                                  <SelectItem
+                                    key={option.value}
+                                    value={option.value}
+                                  >
+                                    {option.label}
+                                  </SelectItem>
+                                ))}
+                              </SelectContent>
+                            </Select>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
 
-                    {errors.form && (
-                      <div className="mb-6 rounded-lg bg-red-50 p-3 text-sm text-red-500">
-                        {errors.form}
-                      </div>
+                      <FormField
+                        control={form.control}
+                        name="travelDates"
+                        render={({ field }) => (
+                          <FormItem className="flex flex-col">
+                            <FormLabel>Travel Dates *</FormLabel>
+                            <Popover>
+                              <PopoverTrigger asChild>
+                                <FormControl>
+                                  <Button
+                                    variant={"outline"}
+                                    className={cn(
+                                      "w-full pl-3 text-left font-normal",
+                                      !field.value && "text-muted-foreground",
+                                    )}
+                                  >
+                                    {field.value?.from ? (
+                                      field.value.to ? (
+                                        <>
+                                          {format(
+                                            field.value.from,
+                                            "LLL dd, y",
+                                          )}{" "}
+                                          -{" "}
+                                          {format(field.value.to, "LLL dd, y")}
+                                        </>
+                                      ) : (
+                                        format(field.value.from, "LLL dd, y")
+                                      )
+                                    ) : (
+                                      <span>Pick your travel dates</span>
+                                    )}
+                                    <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                                  </Button>
+                                </FormControl>
+                              </PopoverTrigger>
+                              <PopoverContent
+                                className="w-auto p-0"
+                                align="start"
+                              >
+                                <Calendar
+                                  initialFocus
+                                  mode="range"
+                                  defaultMonth={field.value?.from}
+                                  selected={field.value}
+                                  onSelect={field.onChange}
+                                  numberOfMonths={2}
+                                  disabled={(date) =>
+                                    date < new Date() ||
+                                    date < new Date("1900-01-01")
+                                  }
+                                />
+                              </PopoverContent>
+                            </Popover>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+
+                      <FormField
+                        control={form.control}
+                        name="specialRequests"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>
+                              Special Requests or Requirements
+                            </FormLabel>
+                            <FormControl>
+                              <Textarea
+                                placeholder="Tell us about any special requirements or preferences..."
+                                className="min-h-[100px]"
+                                {...field}
+                              />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                    </motion.div>
+                  )}
+
+                  {step === 3 && (
+                    <motion.div
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.5 }}
+                      className="space-y-6"
+                    >
+                      <h3 className="text-xl font-bold text-gray-900">
+                        Review Your Information
+                      </h3>
+
+                      <Card className="bg-gray-50">
+                        <CardContent className="space-y-6 p-6">
+                          <div>
+                            <h4 className="mb-4 font-semibold text-gray-900">
+                              Personal Information
+                            </h4>
+                            <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+                              <div>
+                                <p className="text-sm text-gray-500">
+                                  Full Name
+                                </p>
+                                <p className="font-medium">{formValues.name}</p>
+                              </div>
+                              <div>
+                                <p className="text-sm text-gray-500">
+                                  Email Address
+                                </p>
+                                <p className="font-medium">
+                                  {formValues.email}
+                                </p>
+                              </div>
+                              <div>
+                                <p className="text-sm text-gray-500">
+                                  Phone Number
+                                </p>
+                                <p className="font-medium">
+                                  {formValues.phone}
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div>
+                            <h4 className="mb-4 font-semibold text-gray-900">
+                              Trip Details
+                            </h4>
+                            <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+                              <div>
+                                <p className="text-sm text-gray-500">
+                                  Service Type
+                                </p>
+                                <p className="font-medium">
+                                  {
+                                    serviceTypeOptions.find(
+                                      (opt) =>
+                                        opt.value === formValues.serviceType,
+                                    )?.label
+                                  }
+                                </p>
+                              </div>
+                              <div>
+                                <p className="text-sm text-gray-500">
+                                  Travel Dates
+                                </p>
+                                <p className="font-medium">
+                                  {formValues.travelDates?.from &&
+                                  formValues.travelDates?.to
+                                    ? `${format(formValues.travelDates.from, "LLL dd, y")} - ${format(formValues.travelDates.to, "LLL dd, y")}`
+                                    : "Not selected"}
+                                </p>
+                              </div>
+                            </div>
+
+                            {formValues.specialRequests && (
+                              <div className="mt-4">
+                                <p className="text-sm text-gray-500">
+                                  Special Requests
+                                </p>
+                                <p className="font-medium">
+                                  {formValues.specialRequests}
+                                </p>
+                              </div>
+                            )}
+                          </div>
+                        </CardContent>
+                      </Card>
+
+                      <p className="text-sm text-gray-500">
+                        By submitting this form, you agree to be contacted by
+                        our team regarding your travel inquiry. We respect your
+                        privacy and will never share your information with third
+                        parties.
+                      </p>
+                    </motion.div>
+                  )}
+
+                  <div className="flex justify-between pt-6">
+                    {step > 1 && (
+                      <Button
+                        type="button"
+                        variant="outline"
+                        onClick={prevStep}
+                        className="flex items-center gap-2"
+                      >
+                        <ChevronLeft className="h-4 w-4" />
+                        Back
+                      </Button>
                     )}
-                  </motion.div>
-                )}
 
-                <div className="mt-8 flex justify-between">
-                  {step > 1 && (
-                    <button
-                      type="button"
-                      onClick={prevStep}
-                      className="rounded-full border border-gray-300 px-6 py-2 transition-colors hover:bg-gray-50"
-                    >
-                      Back
-                    </button>
-                  )}
-
-                  {step < 3 ? (
-                    <button
-                      type="button"
-                      onClick={nextStep}
-                      className="ml-auto rounded-full bg-primary px-6 py-2 text-white transition-colors hover:bg-primary/90"
-                    >
-                      Next
-                    </button>
-                  ) : (
-                    <button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="btn-primary ml-auto"
-                    >
-                      {isSubmitting ? (
-                        "Submitting..."
-                      ) : (
-                        <>
-                          Submit Request <Send size={16} className="ml-2" />
-                        </>
-                      )}
-                    </button>
-                  )}
+                    {step < 3 ? (
+                      <Button
+                        type="button"
+                        onClick={nextStep}
+                        className="ml-auto flex items-center gap-2"
+                      >
+                        Next
+                        <ChevronRight className="h-4 w-4" />
+                      </Button>
+                    ) : (
+                      <Button
+                        type="button"
+                        onClick={() => form.handleSubmit(onSubmit)()}
+                        disabled={isSubmitting}
+                        className="ml-auto flex items-center gap-2"
+                      >
+                        {isSubmitting ? (
+                          "Submitting..."
+                        ) : (
+                          <>
+                            Submit Request
+                            <Send className="h-4 w-4" />
+                          </>
+                        )}
+                      </Button>
+                    )}
+                  </div>
                 </div>
-              </form>
-            </div>
-          )}
+              </Form>
+            </CardContent>
+          </Card>
         </div>
       </div>
     </section>

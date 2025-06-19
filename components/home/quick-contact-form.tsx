@@ -1,85 +1,94 @@
 "use client";
 
-import type React from "react";
-
-import { useState } from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Send, CheckCircle } from "lucide-react";
+import { Send, CheckCircle, Loader2 } from "lucide-react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
+
+// Import shadcn/ui components
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Button } from "@/components/ui/button";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+
+// Zod schema for form validation
+const contactFormSchema = z.object({
+  name: z
+    .string()
+    .min(2, "Name must be at least 2 characters")
+    .max(50, "Name must be less than 50 characters"),
+  email: z
+    .string()
+    .email("Please enter a valid email address")
+    .min(1, "Email is required"),
+  phone: z
+    .string()
+    .optional()
+    .refine(
+      (val) => !val || /^[\+]?[1-9][\d]{0,15}$/.test(val.replace(/\s/g, "")),
+      "Please enter a valid phone number",
+    ),
+  message: z
+    .string()
+    .min(10, "Message must be at least 10 characters")
+    .max(1000, "Message must be less than 1000 characters"),
+});
+
+type ContactFormData = z.infer<typeof contactFormSchema>;
 
 export function QuickContactForm() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    message: "",
-  });
-  const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-    // Clear error when user types
-    if (errors[name]) {
-      setErrors((prev) => {
-        const newErrors = { ...prev };
-        delete newErrors[name];
-        return newErrors;
-      });
-    }
-  };
+  const form = useForm<ContactFormData>({
+    resolver: zodResolver(contactFormSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      phone: "",
+      message: "",
+    },
+  });
 
-  const validateForm = () => {
-    const newErrors: Record<string, string> = {};
-
-    if (!formData.name.trim()) {
-      newErrors.name = "Name is required";
-    }
-
-    if (!formData.email.trim()) {
-      newErrors.email = "Email is required";
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = "Email is invalid";
-    }
-
-    if (!formData.message.trim()) {
-      newErrors.message = "Message is required";
-    }
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    if (!validateForm()) return;
-
+  const onSubmit = async (data: ContactFormData) => {
     setIsSubmitting(true);
+    setSubmitError(null);
 
-    // Simulate API call
     try {
+      // Simulate API call
       await new Promise((resolve) => setTimeout(resolve, 1500));
+
+      // Here you would typically send the data to your API
+      console.log("Form data:", data);
+
       setIsSuccess(true);
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        message: "",
-      });
+      form.reset();
     } catch (error) {
-      setErrors({ form: "Something went wrong. Please try again." });
+      setSubmitError("Something went wrong. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
   };
 
+  const handleSendAnother = () => {
+    setIsSuccess(false);
+    setSubmitError(null);
+  };
+
   return (
-    <section className="bg-brand-orange-50 py-16">
-      <div className="container-custom">
+    <section className="bg-orange-50 py-16">
+      <div className="container mx-auto px-4">
         <div className="mx-auto max-w-4xl">
           <div className="grid grid-cols-1 items-center gap-12 md:grid-cols-2">
             <motion.div
@@ -88,8 +97,8 @@ export function QuickContactForm() {
               transition={{ duration: 0.5 }}
               viewport={{ once: true }}
             >
-              <h2 className="heading-sm mb-4">Get in Touch</h2>
-              <p className="mb-6 text-foreground/70">
+              <h2 className="mb-4 text-3xl font-bold">Get in Touch</h2>
+              <p className="mb-6 text-gray-600">
                 Have questions about our tours or need a custom itinerary? Fill
                 out this quick form and our team will get back to you within 24
                 hours.
@@ -97,10 +106,10 @@ export function QuickContactForm() {
 
               <div className="space-y-4">
                 <div className="flex items-center">
-                  <div className="mr-4 flex h-10 w-10 items-center justify-center rounded-full bg-primary/10">
+                  <div className="mr-4 flex h-10 w-10 items-center justify-center rounded-full bg-blue-100">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className="h-5 w-5 text-primary"
+                      className="h-5 w-5 text-blue-600"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -115,17 +124,15 @@ export function QuickContactForm() {
                   </div>
                   <div>
                     <p className="text-sm font-medium">Phone</p>
-                    <p className="text-foreground/70">
-                      +256 752 413 322 / +256 756 555 777
-                    </p>
+                    <p className="text-gray-600">+256756555777</p>
                   </div>
                 </div>
 
                 <div className="flex items-center">
-                  <div className="mr-4 flex h-10 w-10 items-center justify-center rounded-full bg-primary/10">
+                  <div className="mr-4 flex h-10 w-10 items-center justify-center rounded-full bg-blue-100">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className="h-5 w-5 text-primary"
+                      className="h-5 w-5 text-blue-600"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -140,7 +147,7 @@ export function QuickContactForm() {
                   </div>
                   <div>
                     <p className="text-sm font-medium">Email</p>
-                    <p className="text-foreground/70">info@aautours.com</p>
+                    <p className="text-gray-600">aautours.travel@aau.co.ug</p>
                   </div>
                 </div>
               </div>
@@ -153,140 +160,130 @@ export function QuickContactForm() {
               viewport={{ once: true }}
             >
               {isSuccess ? (
-                <div className="bg-brand-green-50 rounded-2xl p-8 text-center">
-                  <CheckCircle className="mx-auto mb-4 h-16 w-16 text-primary" />
+                <div className="rounded-2xl bg-green-50 p-8 text-center">
+                  <CheckCircle className="mx-auto mb-4 h-16 w-16 text-green-600" />
                   <h3 className="mb-2 text-xl font-bold">Thank You!</h3>
-                  <p className="text-foreground/70">
+                  <p className="text-gray-600">
                     Your message has been sent successfully. Our team will
                     contact you shortly.
                   </p>
-                  <button
-                    onClick={() => setIsSuccess(false)}
-                    className="mt-6 font-medium text-primary hover:underline"
+                  <Button
+                    variant="link"
+                    onClick={handleSendAnother}
+                    className="mt-6 text-blue-600"
                   >
                     Send another message
-                  </button>
+                  </Button>
                 </div>
               ) : (
-                <form
-                  onSubmit={handleSubmit}
-                  className="rounded-2xl border border-gray-100 bg-white p-6 shadow-lg"
-                >
-                  <div className="space-y-4">
-                    <div>
-                      <label
-                        htmlFor="name"
-                        className="mb-1 block text-sm font-medium"
-                      >
-                        Your Name <span className="text-red-500">*</span>
-                      </label>
-                      <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        className={`w-full rounded-lg border px-4 py-2 ${
-                          errors.name ? "border-red-500" : "border-gray-300"
-                        } focus:outline-none focus:ring-2 focus:ring-primary/50`}
-                        placeholder="John Doe"
-                      />
-                      {errors.name && (
-                        <p className="mt-1 text-sm text-red-500">
-                          {errors.name}
-                        </p>
-                      )}
-                    </div>
-
-                    <div>
-                      <label
-                        htmlFor="email"
-                        className="mb-1 block text-sm font-medium"
-                      >
-                        Email Address <span className="text-red-500">*</span>
-                      </label>
-                      <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        className={`w-full rounded-lg border px-4 py-2 ${
-                          errors.email ? "border-red-500" : "border-gray-300"
-                        } focus:outline-none focus:ring-2 focus:ring-primary/50`}
-                        placeholder="john@example.com"
-                      />
-                      {errors.email && (
-                        <p className="mt-1 text-sm text-red-500">
-                          {errors.email}
-                        </p>
-                      )}
-                    </div>
-
-                    <div>
-                      <label
-                        htmlFor="phone"
-                        className="mb-1 block text-sm font-medium"
-                      >
-                        Phone Number (Optional)
-                      </label>
-                      <input
-                        type="tel"
-                        id="phone"
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleChange}
-                        className="w-full rounded-lg border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary/50"
-                        placeholder="+256 700 000 000"
-                      />
-                    </div>
-
-                    <div>
-                      <label
-                        htmlFor="message"
-                        className="mb-1 block text-sm font-medium"
-                      >
-                        Your Message <span className="text-red-500">*</span>
-                      </label>
-                      <textarea
-                        id="message"
-                        name="message"
-                        value={formData.message}
-                        onChange={handleChange}
-                        rows={4}
-                        className={`w-full rounded-lg border px-4 py-2 ${
-                          errors.message ? "border-red-500" : "border-gray-300"
-                        } focus:outline-none focus:ring-2 focus:ring-primary/50`}
-                        placeholder="I'm interested in booking a safari tour..."
-                      ></textarea>
-                      {errors.message && (
-                        <p className="mt-1 text-sm text-red-500">
-                          {errors.message}
-                        </p>
-                      )}
-                    </div>
-
-                    {errors.form && (
-                      <div className="rounded-lg bg-red-50 p-3 text-sm text-red-500">
-                        {errors.form}
-                      </div>
-                    )}
-
-                    <button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="btn-primary w-full"
+                <div className="rounded-2xl border border-gray-100 bg-white p-6 shadow-lg">
+                  <Form {...form}>
+                    <form
+                      onSubmit={form.handleSubmit(onSubmit)}
+                      className="space-y-4"
                     >
-                      {isSubmitting ? (
-                        "Sending..."
-                      ) : (
-                        <>
-                          Send Message <Send size={16} className="ml-2" />
-                        </>
+                      <FormField
+                        control={form.control}
+                        name="name"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>
+                              Your Name <span className="text-red-500">*</span>
+                            </FormLabel>
+                            <FormControl>
+                              <Input placeholder="John Doe" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+
+                      <FormField
+                        control={form.control}
+                        name="email"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>
+                              Email Address{" "}
+                              <span className="text-red-500">*</span>
+                            </FormLabel>
+                            <FormControl>
+                              <Input
+                                type="email"
+                                placeholder="john@example.com"
+                                {...field}
+                              />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+
+                      <FormField
+                        control={form.control}
+                        name="phone"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Phone Number (Optional)</FormLabel>
+                            <FormControl>
+                              <Input
+                                type="tel"
+                                placeholder="+256 700 000 000"
+                                {...field}
+                              />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+
+                      <FormField
+                        control={form.control}
+                        name="message"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>
+                              Your Message{" "}
+                              <span className="text-red-500">*</span>
+                            </FormLabel>
+                            <FormControl>
+                              <Textarea
+                                rows={4}
+                                placeholder="I'm interested in booking a safari tour..."
+                                {...field}
+                              />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+
+                      {submitError && (
+                        <Alert variant="destructive">
+                          <AlertDescription>{submitError}</AlertDescription>
+                        </Alert>
                       )}
-                    </button>
-                  </div>
-                </form>
+
+                      <Button
+                        type="submit"
+                        disabled={isSubmitting}
+                        className="w-full bg-blue-600 hover:bg-blue-700"
+                      >
+                        {isSubmitting ? (
+                          <>
+                            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                            Sending...
+                          </>
+                        ) : (
+                          <>
+                            Send Message
+                            <Send className="ml-2 h-4 w-4" />
+                          </>
+                        )}
+                      </Button>
+                    </form>
+                  </Form>
+                </div>
               )}
             </motion.div>
           </div>
