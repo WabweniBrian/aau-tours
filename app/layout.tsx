@@ -5,6 +5,7 @@ import { Toaster } from "react-hot-toast";
 import { ThemeProvider } from "@/components/common/theme-provider";
 import BackToTopButton from "@/components/common/back-button";
 import { Plus_Jakarta_Sans, DM_Sans } from "next/font/google";
+import RoadSafetyProvider from "@/components/road-safety/road-safety-provider";
 
 // For headings
 const plusJakartaSans = Plus_Jakarta_Sans({
@@ -52,7 +53,7 @@ export default function RootLayout({
           disableTransitionOnChange
           storageKey="aau-theme"
         >
-          {children}
+          <RoadSafetyProvider>{children}</RoadSafetyProvider>
           <BackToTopButton />
         </ThemeProvider>
       </body>
