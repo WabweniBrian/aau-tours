@@ -17,8 +17,8 @@ import {
   Twitter,
   Youtube,
 } from "lucide-react";
-import { destinationsData } from "@/data/destinations";
 import { tourPackagesData } from "@/data/tour-packages";
+import { services } from "@/data/services";
 import { usePathname } from "next/navigation";
 
 const navLinks = [
@@ -41,6 +41,10 @@ const navLinks = [
   {
     title: "Services",
     href: "/services",
+    children: services.map((service) => ({
+      title: service.title,
+      href: `/services/${service.id}`,
+    })),
   },
   {
     title: "Contact",
@@ -95,6 +99,7 @@ export function Navbar() {
               </span>
             </div>
           </div>
+
           <div className="flex items-center space-x-3">
             <Link href="#" aria-label="Facebook">
               <Facebook
@@ -123,6 +128,7 @@ export function Navbar() {
           </div>
         </div>
       </div>
+
       <header
         className={cn(
           "sticky top-0 z-50 w-full transition-all duration-300",
@@ -187,7 +193,6 @@ export function Navbar() {
                         {link.title}
                       </Link>
                     )}
-
                     {link.children && (
                       <div className="invisible absolute left-0 mt-2 w-56 translate-y-2 transform opacity-0 transition-all duration-300 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
                         <div className="rounded-2xl border border-border/50 bg-white py-2 shadow-xl">
@@ -214,9 +219,6 @@ export function Navbar() {
             </nav>
 
             <div className="hidden lg:block">
-              {/* <Link href="/contact" className="btn-primary">
-                Book Now
-              </Link> */}
               <div>
                 <Image
                   src="/twi-logo.png"
@@ -330,14 +332,6 @@ export function Navbar() {
                       </div>
                     );
                   })}
-
-                  {/* <Link
-                    href="/contact"
-                    className="btn-primary mt-4 w-full text-center"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    Book Now
-                  </Link> */}
                   <div className="relative">
                     <Image
                       src="/twi-logo.png"

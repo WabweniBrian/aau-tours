@@ -31,7 +31,7 @@ const Services = () => {
               <h3 className="mb-3 text-xl font-bold">{service.title}</h3>
               <p className="mb-4 text-foreground/70">{service.description}</p>
               <Link
-                href={`/services#${service.id}`}
+                href={`/services/${service.id}`}
                 className="inline-flex items-center font-medium text-primary hover:underline"
               >
                 Learn More

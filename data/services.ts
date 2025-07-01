@@ -36,12 +36,42 @@ export const services = [
     link: "/services#service-booking",
   },
   {
+    id: "motor-tours",
+    title: "Motorsport Tours",
+    description:
+      "Experience Uganda's breathtaking landscapes and cultural heritage through our expertly guided motor tours. From scenic drives to cultural expeditions, discover the pearl of Africa at your own pace.",
+    icon: "/images/vehicle.png",
+    image: "/images/motor-tours2.jpg",
+    images: [
+      "/images/motor-tours1.jpg",
+      "/images/motor-tours2.jpg",
+      "/images/motor-tours3.jpg",
+      "/images/motor-tours4.jpg",
+      "/images/motor-tours5.jpg",
+      "/images/motor-tours6.jpg",
+      "/images/motor-tours7.jpg",
+      "/images/motor-tours8.jpg",
+    ],
+    features: [
+      "Scenic route planning and navigation",
+      "Professional driver-guides with local knowledge",
+      "Comfortable and well-maintained vehicles",
+      "Flexible itineraries based on your interests",
+      "Cultural site visits and local interactions",
+      "Photography stops at iconic locations",
+      "Safety equipment and emergency support",
+      "Refreshment stops at local establishments",
+    ],
+    cta: "Explore Motor Tours",
+    link: "https://aau.co.ug",
+  },
+  {
     id: "inland-transport",
     title: "Inland Transportation",
     description:
       "For any inland movements within Kampala for business meetings or engagements, we provide chauffer services using our moderate fleet of town cars.",
     icon: "/images/vehicle.png",
-    image: "/images/car-rentals.jpg",
+    image: "/images/car-rentals.png",
     features: [
       "Private chauffeur-driven vehicles",
       "Comfortable cars for city movement",

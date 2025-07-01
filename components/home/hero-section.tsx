@@ -10,6 +10,26 @@ import { ChevronRight, Car, Plane, Trophy, Camera } from "lucide-react";
 const slides = [
   {
     id: 1,
+    title: "Motorsport Tours",
+    subtitle:
+      "Experience the thrill of motorsport with our exclusive racing tours and track day experiences across East Africa",
+    image: "/images/motor-tours2.jpg",
+    icon: Camera,
+    cta: {
+      primary: {
+        text: "Explore Motorsport Tours",
+        link: "https://aau.co.ug",
+        external: true,
+      },
+      secondary: {
+        text: "Contact Us",
+        link: "/contact",
+      },
+    },
+    location: "East Africa",
+  },
+  {
+    id: 2,
     title: "Game & Safari Tours",
     subtitle:
       "Discover Uganda's breathtaking wildlife and landscapes with our premium safari packages",
@@ -28,7 +48,7 @@ const slides = [
     location: "Uganda National Parks",
   },
   {
-    id: 2,
+    id: 3,
     title: "Hotel Bookings",
     subtitle:
       "Let us book you into comfortable budget hotels and trust us to deliver you to your hotel at no extra cost.",
@@ -48,7 +68,7 @@ const slides = [
   },
 
   {
-    id: 3,
+    id: 4,
     title: "Airport Transfers",
     subtitle:
       "Professional and reliable airport pickup and drop-off services available 24/7",
@@ -67,11 +87,11 @@ const slides = [
     location: "Entebbe & Kampala",
   },
   {
-    id: 4,
+    id: 5,
     title: "Inland Transportation",
     subtitle:
       "For any inland movements within Kampala for business meetings or engagements.",
-    image: "/images/car-rentals.jpg",
+    image: "/images/car-rentals.png",
     icon: Car,
     cta: {
       primary: {
@@ -207,12 +227,24 @@ export function HeroSection() {
             custom={3}
             variants={contentVariants}
           >
-            <Link
-              href={slides[currentSlide].cta.primary.link}
-              className="inline-flex items-center justify-center rounded-full bg-primary px-6 py-3 text-base font-medium text-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:bg-primary/90 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2"
-            >
-              {slides[currentSlide].cta.primary.text}
-            </Link>
+            {slides[currentSlide].cta.primary.external ? (
+              <Link
+                href={slides[currentSlide].cta.primary.link}
+                className="inline-flex items-center justify-center rounded-full bg-primary px-6 py-3 text-base font-medium text-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:bg-primary/90 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {slides[currentSlide].cta.primary.text}
+              </Link>
+            ) : (
+              <Link
+                href={slides[currentSlide].cta.primary.link}
+                className="inline-flex items-center justify-center rounded-full bg-primary px-6 py-3 text-base font-medium text-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:bg-primary/90 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2"
+              >
+                {slides[currentSlide].cta.primary.text}
+              </Link>
+            )}
+
             <Link
               href={slides[currentSlide].cta.secondary.link}
               className="inline-flex items-center justify-center rounded-full border-2 border-white bg-transparent px-6 py-3 text-base font-medium text-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:bg-white/10 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2"

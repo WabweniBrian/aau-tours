@@ -2,16 +2,8 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { ChevronDown } from "lucide-react";
 
 export function ServicesHero() {
-  const scrollToNextSection = () => {
-    const nextSection = document.getElementById("services-list");
-    if (nextSection) {
-      nextSection.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
   return (
     <section className="relative flex min-h-[80vh] items-center overflow-hidden">
       {/* Background with parallax effect */}
