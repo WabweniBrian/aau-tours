@@ -65,21 +65,7 @@ export function ServiceDetailHero({ service }: ServiceDetailHeroProps) {
               {service.description}
             </p>
 
-            <div className="flex flex-wrap gap-4">
-              {isExternalLink ? (
-                <a
-                  href={service.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-primary"
-                >
-                  {service.cta}
-                </a>
-              ) : (
-                <Link href={service.link} className="btn-primary">
-                  {service.cta}
-                </Link>
-              )}
+            <div className="flex">
               <Link
                 href="https://aau.co.ug"
                 className="btn-secondary"
