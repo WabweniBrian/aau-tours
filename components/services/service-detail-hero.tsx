@@ -80,8 +80,13 @@ export function ServiceDetailHero({ service }: ServiceDetailHeroProps) {
                   {service.cta}
                 </Link>
               )}
-              <Link href="/contact" className="btn-secondary">
-                Get Quote
+              <Link
+                href="https://aau.co.ug"
+                className="btn-secondary"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Safety Driving Culture
               </Link>
             </div>
           </motion.div>
