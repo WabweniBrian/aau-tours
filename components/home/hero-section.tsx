@@ -4,106 +4,152 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ChevronRight, Car, Plane, Trophy, Camera } from "lucide-react";
+import {
+  ChevronRight,
+  Car,
+  Plane,
+  Trophy,
+  Camera,
+  Home,
+  Building,
+  Users,
+} from "lucide-react";
 
 // Define the slide data
 const slides = [
   {
     id: 1,
-    title: "Motorsport Tours",
+    title: "Game Park Tours & Gorilla Trekking",
     subtitle:
-      "Experience the thrill of motorsport with our exclusive racing tours and track day experiences across East Africa",
-    image: "/images/motor-tours2.jpg",
+      "We provide customized tour & travel services to various game parks with guided tours to our flora and wildlife including Gorilla trekking.",
+    image: "/images/aau-safari.webp",
     icon: Camera,
     cta: {
       primary: {
-        text: "Explore Motorsport Tours",
-        link: "https://aau.co.ug",
-        external: true,
-      },
-      secondary: {
-        text: "Contact Us",
-        link: "/contact",
-      },
-    },
-    location: "East Africa",
-  },
-  {
-    id: 2,
-    title: "Game & Safari Tours",
-    subtitle:
-      "Discover Uganda's breathtaking wildlife and landscapes with our premium safari packages",
-    image: "/images/safari-tours.jpg",
-    icon: Camera,
-    cta: {
-      primary: {
-        text: "View Tour Packages",
+        text: "Book Safari Tour",
         link: "/tour-packages",
       },
       secondary: {
         text: "Learn More",
-        link: "/services#safari-tours",
+        link: "/services/safari-tours",
       },
     },
     location: "Uganda National Parks",
   },
   {
-    id: 3,
-    title: "Hotel Bookings",
+    id: 2,
+    title: "Airport Pickups & Drops",
     subtitle:
-      "Let us book you into comfortable budget hotels and trust us to deliver you to your hotel at no extra cost.",
-    image: "/images/hotel-booking.jpg",
-    icon: Trophy,
-    cta: {
-      primary: {
-        text: "Explore Motorsport Tours",
-        link: "/services#hotel-booking",
-      },
-      secondary: {
-        text: "Book Service",
-        link: "/services#service-booking",
-      },
-    },
-    location: "Uganda",
-  },
-
-  {
-    id: 4,
-    title: "Airport Transfers",
-    subtitle:
-      "Professional and reliable airport pickup and drop-off services available 24/7",
+      "Your travel from and to the airport is guaranteed to suit your convenience with a personal touch and feel.",
     image: "/images/airport-transfers.webp",
     icon: Plane,
     cta: {
       primary: {
-        text: "Book Transfer",
-        link: "/services#airport-transfers",
-      },
-      secondary: {
-        text: "Get Quote",
+        text: "Book Airport Transfer",
         link: "/services#service-booking",
       },
+      secondary: {
+        text: "Read More",
+        link: "/services/airport-transfers",
+      },
     },
-    location: "Entebbe & Kampala",
+    location: "Entebbe Airport",
   },
   {
-    id: 5,
+    id: 3,
+    title: "Motorsport Tours",
+    subtitle:
+      "Experience breathtaking landscapes and cultural heritage through our expertly guided motor tours. Including Ugandan National Motorsports Championship Events, East African Regional Motorsports Championship events, African Continental Motorsports Championships Events, and World Motorsports Championship events.",
+    image: "/images/motor-tours2.jpg",
+    icon: Trophy,
+    cta: {
+      primary: {
+        text: "Learn More",
+        link: "/services/motor-tours",
+      },
+      secondary: {
+        text: "Safety Driving Culture",
+        link: "https://aau.co.ug",
+        external: true,
+      },
+    },
+    location: null,
+  },
+  {
+    id: 4,
     title: "Inland Transportation",
     subtitle:
-      "For any inland movements within Kampala for business meetings or engagements.",
+      "For any inland movements within Kampala for business meetings or engagements, we provide chauffeur services using our moderate fleet of town cars.",
     image: "/images/car-rentals.png",
     icon: Car,
     cta: {
       primary: {
-        text: "View Fleet",
-        link: "/services#inland-transport",
-      },
-      secondary: {
-        text: "Request Quote",
+        text: "Book Transportation",
         link: "/services#service-booking",
       },
+      secondary: {
+        text: "Learn More",
+        link: "/services/inland-transport",
+      },
     },
-    location: "Nationwide Coverage",
+    location: "Kampala City",
+  },
+  {
+    id: 5,
+    title: "Hotel Bookings",
+    subtitle:
+      "Let us book you into comfortable budget hotels and trust us to deliver you to your hotel at no extra cost.",
+    image: "/images/hotel-booking.jpg",
+    icon: Home,
+    cta: {
+      primary: {
+        text: "Book Hotel",
+        link: "/services#service-booking",
+      },
+      secondary: {
+        text: "Read More",
+        link: "/services/hotel-booking",
+      },
+    },
+    location: "Uganda",
+  },
+  {
+    id: 6,
+    title: "Fully Furnished Apartments",
+    subtitle:
+      "Choose from our various fully furnished apartments for a home feel environment and personal comfort.",
+    image: "/images/furnished-apartments.jpg",
+    icon: Building,
+    cta: {
+      primary: {
+        text: "Book Apartment",
+        link: "/services#service-booking",
+      },
+      secondary: {
+        text: "Read More",
+        link: "/services/furnished-apartments",
+      },
+    },
+    location: "Kampala & Suburbs",
+  },
+  {
+    id: 7,
+    title: "Expatriate Settlement Support",
+    subtitle:
+      "For any expatriates coming to Uganda for work, we ease your insertion into our society by helping you settle.",
+    image: "/images/expat-settlement.jpg",
+    icon: Users,
+    cta: {
+      primary: {
+        text: "Get Settlement Help",
+        link: "/services#service-booking",
+      },
+      secondary: {
+        text: "Learn More",
+        link: "/services/expatriate-settlement",
+      },
+    },
+    location: "Uganda",
   },
 ];
 
@@ -227,30 +273,29 @@ export function HeroSection() {
             custom={3}
             variants={contentVariants}
           >
-            {slides[currentSlide].cta.primary.external ? (
+            <Link
+              href={slides[currentSlide].cta.primary.link}
+              className="inline-flex items-center justify-center rounded-full bg-primary px-6 py-3 text-base font-medium text-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:bg-primary/90 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2"
+            >
+              {slides[currentSlide].cta.primary.text}
+            </Link>
+            {slides[currentSlide].cta.secondary.external ? (
               <Link
-                href={slides[currentSlide].cta.primary.link}
-                className="inline-flex items-center justify-center rounded-full bg-primary px-6 py-3 text-base font-medium text-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:bg-primary/90 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2"
+                href={slides[currentSlide].cta.secondary.link}
+                className="inline-flex items-center justify-center rounded-full border-2 border-white bg-transparent px-6 py-3 text-base font-medium text-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:bg-white/10 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {slides[currentSlide].cta.primary.text}
+                {slides[currentSlide].cta.secondary.text}
               </Link>
             ) : (
               <Link
-                href={slides[currentSlide].cta.primary.link}
-                className="inline-flex items-center justify-center rounded-full bg-primary px-6 py-3 text-base font-medium text-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:bg-primary/90 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2"
+                href={slides[currentSlide].cta.secondary.link}
+                className="inline-flex items-center justify-center rounded-full border-2 border-white bg-transparent px-6 py-3 text-base font-medium text-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:bg-white/10 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2"
               >
-                {slides[currentSlide].cta.primary.text}
+                {slides[currentSlide].cta.secondary.text}
               </Link>
             )}
-
-            <Link
-              href={slides[currentSlide].cta.secondary.link}
-              className="inline-flex items-center justify-center rounded-full border-2 border-white bg-transparent px-6 py-3 text-base font-medium text-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:bg-white/10 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2"
-            >
-              {slides[currentSlide].cta.secondary.text}
-            </Link>
           </motion.div>
         </motion.div>
 

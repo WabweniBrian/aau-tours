@@ -4,6 +4,7 @@ import { ServiceDetailHero } from "@/components/services/service-detail-hero";
 import CTA from "@/components/about/cta";
 import type { Metadata } from "next";
 import { ServiceDetailContent } from "@/components/services/service-detail-content";
+import { MotorsportEvents } from "@/components/services/motorsport-events";
 
 interface ServicePageProps {
   params: {
@@ -44,6 +45,7 @@ export default function ServicePage({ params }: ServicePageProps) {
   return (
     <>
       <ServiceDetailHero service={service} />
+      {service.id === "motor-tours" && <MotorsportEvents />}
       <ServiceDetailContent service={service} />
       <CTA />
     </>

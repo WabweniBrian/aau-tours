@@ -39,7 +39,7 @@ export const services = [
     id: "motor-tours",
     title: "Motorsport Tours",
     description:
-      "Experience Uganda's breathtaking landscapes and cultural heritage through our expertly guided motor tours. From scenic drives to cultural expeditions, discover the pearl of Africa at your own pace.",
+      "Experience breathtaking landscapes and cultural heritage through our expertly guided motor tours. Including Ugandan National Motorsports Championship Events, East African Regional Motorsports Championship events, African Continental Motorsports Championships Events, and World Motorsports Championship events.",
     icon: "/images/vehicle.png",
     image: "/images/motor-tours2.jpg",
     images: [
