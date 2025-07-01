@@ -39,7 +39,7 @@ export const services = [
     id: "motor-tours",
     title: "Motorsport Tours",
     description:
-      "Experience breathtaking landscapes and cultural heritage through our expertly guided motor tours. Including Ugandan National Motorsports Championship Events, East African Regional Motorsports Championship events, African Continental Motorsports Championships Events, and World Motorsports Championship events.",
+      "Experience the thrill of motorsport with our exclusive racing tours and track day experiences across the world.",
     icon: "/images/vehicle.png",
     image: "/images/motor-tours2.jpg",
     images: [

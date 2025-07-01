@@ -38,6 +38,26 @@ const slides = [
   },
   {
     id: 2,
+    title: "Motorsport Tours",
+    subtitle:
+      "Experience the thrill of motorsport with our exclusive racing tours and track day experiences across the world.",
+    image: "/images/motor-tours2.jpg",
+    icon: Trophy,
+    cta: {
+      primary: {
+        text: "Explore Motor Tours",
+        link: "/services/motor-tours",
+      },
+      secondary: {
+        text: "Safety Driving Culture",
+        link: "https://aau.co.ug",
+        external: true,
+      },
+    },
+    location: null,
+  },
+  {
+    id: 3,
     title: "Airport Pickups & Drops",
     subtitle:
       "Your travel from and to the airport is guaranteed to suit your convenience with a personal touch and feel.",
@@ -55,26 +75,7 @@ const slides = [
     },
     location: "Entebbe Airport",
   },
-  {
-    id: 3,
-    title: "Motorsport Tours",
-    subtitle:
-      "Experience breathtaking landscapes and cultural heritage through our expertly guided motor tours. Including Ugandan National Motorsports Championship Events, East African Regional Motorsports Championship events, African Continental Motorsports Championships Events, and World Motorsports Championship events.",
-    image: "/images/motor-tours2.jpg",
-    icon: Trophy,
-    cta: {
-      primary: {
-        text: "Learn More",
-        link: "/services/motor-tours",
-      },
-      secondary: {
-        text: "Safety Driving Culture",
-        link: "https://aau.co.ug",
-        external: true,
-      },
-    },
-    location: null,
-  },
+
   {
     id: 4,
     title: "Inland Transportation",
