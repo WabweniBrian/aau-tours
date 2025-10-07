@@ -86,7 +86,7 @@ export function Navbar() {
           <div className="flex items-center space-x-4">
             <div className="flex items-center space-x-1">
               <Phone size={14} />
-              <span className="text-sm">+256756555777</span>
+              <span className="text-sm">+256772313333</span>
             </div>
             <div className="flex items-center space-x-1">
               <Mail size={14} />
@@ -95,7 +95,7 @@ export function Navbar() {
             <div className="flex items-center space-x-1">
               <MapPin size={14} />
               <span className="text-sm">
-                Plot 8, Old Portbell Road, Kampala
+                Plot 4, Old Portbell Road, Kampala
               </span>
             </div>
           </div>

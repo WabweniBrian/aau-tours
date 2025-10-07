@@ -125,12 +125,12 @@ export function Footer() {
                   className="mr-3 mt-1 flex-shrink-0 text-primary"
                 />
                 <span className="text-white/80">
-                  Plot 8, Old Portbell Road, Kampala, Uganda
+                  Plot 4, Old Portbell Road, Kampala
                 </span>
               </li>
               <li className="flex items-center">
                 <Phone size={20} className="mr-3 flex-shrink-0 text-primary" />
-                <span className="text-white/80">+256756555777</span>
+                <span className="text-white/80">+256772313333</span>
               </li>
               <li className="flex items-center">
                 <Mail size={20} className="mr-3 flex-shrink-0 text-primary" />

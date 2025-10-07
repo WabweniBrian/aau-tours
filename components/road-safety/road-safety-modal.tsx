@@ -132,7 +132,7 @@ export default function RoadSafetyModal({
 
   const emergencyContacts = [
     { service: "Police Emergency", number: "999" },
-    { service: "Fire & Rescue", number: "999" },
+    { service: "𝙰𝙰u 𝚛𝚎𝚜𝚌𝚞𝚎", number: "+256772366004" },
     // { service: "Medical Emergency", number: "911" },
     // { service: "Traffic Police", number: "0800-122-122" },
   ];
